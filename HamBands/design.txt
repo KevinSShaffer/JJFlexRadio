@@ -1,0 +1,23 @@
+﻿static Bands:
+    enum BandNames
+        160m, 80m, ...
+    enum Licenses:
+        novice, technition, general, advanced, extra
+    Modes:
+        CW, MCW, Phone, USB, Image, RTTYData
+    class BandDivision:
+        long low, high
+        licenses[] Priveledge;
+        Modes[] Mode
+    class BandItem
+        BandNames Name;
+        long Low, High;
+        BandDivision[] Divisions;
+    BandItem[] TheBands;
+    query(band) - returns BandItem
+    query(band, licenses lic)
+        returns BandItem with ranges for the license
+    query(band, mode)
+    query(band, license, mode)
+    query(frequency) - return the BandItem
+

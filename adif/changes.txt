@@ -1,0 +1,3 @@
+﻿1.2.2.0 - Add QSL_RCVD and SENT fields and provide reformatting routines
+1.2.3.0 - Add CallLookup log header tag
+1.2.4.0 - Add DXCC tag

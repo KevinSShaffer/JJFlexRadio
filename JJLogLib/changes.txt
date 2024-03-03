@@ -1,0 +1,13 @@
+﻿1.4.1.3 - fix null object exception for bad callsign
+1.4.2.0 - Add QSL_RCVD and QSL_SENT fields to default log
+1.4.3.0 - Add HamQTH lookup to the logs.
+1.5.0.0 - Simplify country lookup and fields.
+1.5.1.0 - Set grid field
+1.5.2.0 - don't lookup most calls with a slash, only of the form /[0-9m].
+1.5.2.1 - Fix race condition getting skcc data from the web
+1.5.3.1 - Add new DXCC field
+1.6.1.1 - Add total and confirmed stats.
+1.6.1.2 - Fix bug in skccWesLog with showStats()
+1.6.1.3 - Use old local database if newer one can't be loaded.
+1.6.2.0 - Use hamqth.dll for callsign lookup.
+1.6.2.1 07/29/2020 - small fix to logproc in lookupDoneHandler.

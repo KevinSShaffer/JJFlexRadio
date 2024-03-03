@@ -1,0 +1,8 @@
+﻿Upon connect:
+    If TotalNumSlices is 0, error interrupt.
+
+Only the first arrival may transmit.
+
+Station name?
+see setupFreqOut and AdjustRigFields
+    Transmit slice shown with uppercase char if can transmit.

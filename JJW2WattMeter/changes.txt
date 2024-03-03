@@ -1,0 +1,2 @@
+﻿1.1.1.1 11/05/2019 - Fixed error handling and serialization in read routine
+1.2.1.1 01/02/2020 - continually read necessary values.

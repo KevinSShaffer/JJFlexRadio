@@ -1,0 +1,640 @@
+﻿How XML search works?
+At first, you have to ask for session ID:
+
+https://www.hamqth.com/xml.php?u=username&p=password
+where
+
+table with 2 columns and 2 rows
+u
+username registered on HamQTH (station callsign) 
+p
+user's password
+table end
+
+If your username or password is correct, you'll get something like this:
+
+    <?xml version="1.0"?>
+    <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+    <session>
+    <session_id>09b0ae90050be03c452ad235a1f2915ad684393c</session_id>
+    </session>
+    </HamQTH>
+  
+If your username or password is NOT correct, XML search returns:
+
+    <?xml version="1.0"?>
+    <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+    <session>
+    <error>Wrong user name or password</error>
+    </session> 
+    </HamQTH>
+  
+Session ID is valid for one hour. After it expires, you need to request for new one.
+If your session expired or the query is not valid, XML query will return:
+
+    <?xml version="1.0"?>
+    <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+    <session>
+    <error>Session does not exist or expired</error>
+    </session> 
+    </HamQTH>
+  
+How do I search for callsign data?
+Now we have our session ID and can try to search for callsign e.g. OK2CQR:
+
+https://www.hamqth.com/xml.php?id=09b0ae90050be03c452ad235a1f2915ad684393c&callsign=ok2cqr&prg=YOUR_PROGRAM_NAME
+where
+
+table with 2 columns and 3 rows
+id
+session ID requested before 
+callsign
+callsign you are looking for 
+YOUR_PROGRAM_NAME
+Name of the application using XML search (without spaces)
+table end
+
+If your session is valid and callsign exists you get this XML structure:
+
+    <?xml version="1.0"?>
+    <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+    <search> 
+	<callsign>ok2cqr</callsign> 
+	<nick>Petr</nick> 
+	<qth>Neratovice</qth> 
+	<country>Czech Republic</country>
+     	<adif>503</adif>
+	<itu>28</itu> 
+	<cq>15</cq> 
+	<grid>jo70gg</grid> 
+	<adr_name>Petr Hlozek</adr_name> 
+	<adr_street1>17. listopadu 1065</adr_street1> 
+	<adr_city>Neratovice</adr_city> 
+	<adr_zip>27711</adr_zip> 
+	<adr_country>Czech Republic</adr_country> 
+     	<adr_adif>503</adr_adif>
+	<district>GZL</district>
+	<lotw>Y</lotw> 
+	<qsl>Y</qsl> 
+	<qsldirect>Y</qsldirect> 
+	<eqsl>Y</eqsl> 
+	<email>petr@ok2cqr.com</email> 
+	<jabber>petr@ok2cqr.com</jabber> 
+	<skype>PetrHH</skype> 
+ <birth_year>1982</birth_year> 
+	<lic_year>1998</lic_year> 
+	<web>https://www.ok2cqr.com</web>
+	<latitude>50.07</latitude>
+	<longitude>14.42</longitude>
+	<continent>EU</continent>
+        <utc_offset>-1</utc_offset>
+	<picture>https://www.hamqth.com/userfiles/o/ok/ok2cqr/_profile/ok2cqr_nove.jpg</picture>
+    </search> 
+    </HamQTH>
+    
+    where
+
+table with 2 columns and 46 rows
+callsign
+callsign you searched 
+nick
+name used on the air 
+qth
+callsign's QTH 
+country
+country related to callsign, not to the address 
+adif
+ADIF ID of country related to callsign 
+itu
+ITU zone 
+CQ
+CQ (WAZ) zone 
+grid
+station locator 
+adr_name
+address name 
+adr_street1
+street address 
+adr_street2
+street address 
+adr_street3
+street address 
+adr_city
+city address 
+adr_zip
+zipcode 
+adr_country
+country related to the address 
+adr_adif
+ADIF ID of address country 
+district
+station district 
+us_state
+US state (USA stations only) 
+us_county
+US county (USA stations only) 
+oblast
+something like district (Russian stations) 
+dok
+DOK (DL stations) 
+iota
+IOTA reference number 
+qsl_via
+QSL information 
+lotw
+Y - uses LoTW, N - doesn't use LoTW, ? - we don't know 
+eqsl
+Y - uses eQSL, N - doesn't use eQSL, ? - we don't know 
+qsl
+Y - accept QSL via bureau, N - doesn't accept QSL via bureau, ? - we don't know 
+qsldirect
+Y - accept direct QSL card, N - doesn't accept direct QSL, ? - we don't know 
+email
+email 
+jabber
+jabber 
+icq
+icq number 
+msn
+MSN 
+skype
+Skype 
+birth_year
+Year of birth 
+lic_year
+Licenced since 
+picture
+link to user's picture 
+latitude
+station position - latitude 
+longitude
+station position - longitude 
+continent
+continent 
+utc_offset
+offset to UTC time in station location 
+facebook
+link to Facebook profile 
+twitter
+link to user's Twitter feed 
+gplus
+link to GooglePlus profile 
+youtube
+link to user's YouTube channel 
+linkedin
+link to user's LinkedIn profile 
+flicker
+link to user's flicker profile 
+vimeo
+link to user's Vimeo channel
+table end
+
+If callsign doesn't exist in HamQTH database, you get this:
+
+    <?xml version="1.0"?>
+    <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+    <session>
+      <error>Callsign not found</error>
+    </session>
+    </HamQTH>
+  
+How do I get callsign bio?
+If you have session ID, it's very easy. Just use this http request:
+
+https://www.hamqth.com/xml_bio.php?id=09b0ae90050be03c452ad235a1f2915ad684393c&callsign=ok2cqr&strip_html=1
+where: 
+
+table with 2 columns and 3 rows
+id
+session ID requested before 
+callsign
+callsign's bio you are looking for 
+strip_html
+1 - if you want to get plain text without HTML tags (default value), 0 - you want to get as is, also with HTML code 
+table end
+
+The result when station is at HamQTH:
+
+<?xml version="1.0"?>
+<HamQTH version="2.6" xmlns="https://www.hamqth.com">
+<search> 
+  <callsign>ok2cqr</callsign> 
+  <bio>my looong biography</bio> 
+</search> 
+</HamQTH>
+    where:
+
+table with 2 columns and 2 rows
+callsign
+callsign you searched 
+bio
+the bio information text
+table end
+
+If callsign doesn't exist in HamQTH database, you get this:
+
+<?xml version="1.0"?>
+<HamQTH version="2.6" xmlns="https://www.hamqth.com">
+  <session>
+  <error>Callsign not found</error>
+</session>
+</HamQTH>
+    
+If you need only longitude and latitude and other data is not interesting for you, you can use xml_latlong.php and you'll get only coordinates. The output
+is the same like from XML search. 
+
+XML recent activity search
+
+Recent activity of any callsign is collected from 
+Reverse beacon network
+ and dx cluster. It's very usefull utility especially for dx expedition and rare stations. This inteface also makes accessible list of QSO with searched
+station in the HamQTH logbook database and list of most recent QSO from station's log (if any exists). 
+
+How it works?
+
+This search also needs xml session id. How to get it is described at 
+XML callbook search.
+If you have it, you can try query like this:
+
+https://www.hamqth.com/xml_recactivity.php?id=session_id&callsign=ok2cqr&rec_activity=1&log_activity=1&logook=1
+where: 
+
+table with 2 columns and 5 rows
+id
+session ID requested before 
+callsign
+callsign you are looking for 
+rec_activity
+1 - include also data from RBN and dx clusters (default value), 0 do not add RBN and DX clusters data 
+log_activity
+1 - include 20 qso QSO from HamQTH logbook (default value), 0 do not add logbook data 
+logbook
+1 - include last 20 QSO from HamQTH station's logbook (default value), 0 do not add logbook data
+table end
+
+If callsign doesn't exist in HamQTH database, you get this:
+
+    <?xml version="1.0"?>
+    <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+      <session>
+      <error>Callsign not found</error>
+    </session>
+    </HamQTH>
+        
+and if it does, you'll get this XML:
+
+    <?xml version="1.0"?>
+    <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+    <search>
+      <activity>
+        <data>
+          <source>DXC</source>
+          <spotter>ZL2HAM</spotter>  
+          <callsign>OK2CQR</callsign>          
+          <note>calling CQ</note>
+          <freq>21025.0</freq>
+          <date>2011-09-10</date>
+          <time>05:34:28</time>
+        </data>    
+        <data>
+          <source>RBN</source>
+          <spotter>IK3STG</spotter>
+          <callsign>OK2CQR</callsign>
+          <note>13 dB  34 WPM  CQ</note>
+          <freq>14026.3</freq>
+          <date>2011-09-07</date>
+          <time>13:34:28</time>
+        </data>    
+      </activity>
+      <log_activity>
+        <data>
+          <callsign>PT0S</callsign>
+          <band>20M</band>
+          <mode>CW</mode>
+          <date>2012-11-13</date>
+        </data>
+        <data>
+          <callsign>OK1RR</callsign>
+          <band>40M</band>
+          <mode>CW</mode>
+          <date>2012-09-07</date>
+        </data>
+      </log_activity>
+      <logbook>
+        <data>
+          <callsign>AA3B</callsign>
+          <band>15M</band>
+          <mode>CW</mode>
+          <date>2012-11-11</date>
+        </data>
+        <data>
+          <callsign>OK7WA</callsign>
+          <band>80M</band>
+          <mode>SSB</mode>
+          <date>2012-05-07</date>
+        </data>
+      </logbook>
+    </search>
+    </HamQTH>
+        where:
+
+table with 2 columns and 18 rows
+activity
+section with records from RBN and DX clusters network 
+  source
+source of the data - RBN or DXC 
+  spotter
+station that send the spot (DXC) or callsign of reverse beacon network station 
+  callsign
+spotted callsign 
+  note
+short note related to the spot 
+  freq
+frequency in kHz 
+  date
+spot sent date 
+  time
+spot sent time 
+log_activity
+section with records HamQTH logbook - list of station that has callsign in their logs 
+  callsign
+station that has QSO in the log with station you are looking for 
+  mode
+mode of operating 
+  band
+band like in ADIF spec e.g. 160M, 40M etc. 
+  date
+QSO date 
+logbook
+section with records in station's HamQTH logbook - list of 20 most recent QSOs in station's log 
+  callsign
+wkd callsign 
+  mode
+mode of operating 
+  band
+band like in ADIF spec e.g. 160M, 40M etc. 
+  date
+QSO date
+table end
+
+DXCC search
+
+HamQTH also provides DXCC search based on Martin's (OK1RR) DXCC tables used in 
+CQRLOG.
+The tables are excellent and probably the best ever. It provides excellent detail info e.g. callsign U3AP - 
+https://www.hamqth.com/dxcc.php?callsign=U3AP
+ you don't get only basic info that it is European Russia, but also Gorod Moskva (MA), World War II. Veteran. 
+
+How DXCC XML search works?
+
+It is very easy. If you query HamQTH like this: 
+https://www.hamqth.com/dxcc.php?callsign=U3AP"
+ where: 
+
+callsign the callsign you are looking for DXCC info 
+You'll get this XML structure:
+      <?xml version="1.0"?>
+      <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+      <dxcc>
+        <callsign>U3AP</callsign>
+        <name>Russia (European)</name>
+        <details>Russia (European), Gorod Moskva (MA), World War II. Veteran</details>
+        <continent>EU</continent>
+        <utc>-3</utc>
+        <waz>16</waz>
+        <itu>29</itu>
+        <lat>55.75</lat>
+        <lng>37.63</lng>
+        <adif>54</adif>
+      </dxcc>
+      </HamQTH>      
+    There is another way. If you set callsign parameter to adif number
+ (https://www.hamqth.com/dxcc.php?callsign=503),
+you'll get something like this:
+
+      <?xml version="1.0"?>
+      <HamQTH version="2.6" xmlns="https://www.hamqth.com">
+      <dxcc>
+        <name>Czech Republic</name>
+        <continent>EU</continent>
+        <utc>-1</utc>
+        <waz>15</waz>
+        <itu>28</itu>
+        <lat>50.07</lat>
+        <lng>14.42</lng>
+        <adif>503</adif>
+      </dxcc>
+      </HamQTH>      
+    You can use it for free, without any registration. Have a fun! 
+
+LOG upload
+
+HamQTH also has very nice and powerful log search function. To make upload much easier, I've created simple page for uploading logs from mobile phone or
+your own application 
+https://www.hamqth.com/prg_log_upload.php.
+Remember you always have to upload whole log. HamQTH doesn't support partial upload. 
+
+How log upload works?
+
+It's very similar to log upload function in station profile but much easier to add to your application. To upload the log, you have to use POST method
+with these parameters:
+u - username
+p - password
+c - callsign (if empty, username as callsign will be used)
+f - file name of the uploading log
+send_log - send OK as value (like user click on the OK button) 
+The file size is limited to 20MB but you can compress ADIF with zip, rar, 7zip, tar.gz or tar.bz2. File name in the archive has to have adi or adif extension
+otherwise won't be imported. If you'll upload plain ADIF file, adi/adif and txt extensions are allowed.
+
+Like the upload from user's profile, log is not imported in run-time but on background. User will be informed via email about import progress. After you
+send POST request, there are four error messages you can get: 
+
+User parameter missing
+Password parameter missing
+Wrong username or password
+You cannot upload log for this callsign
+
+And after successful upload you'll get this:
+Log uploaded successfully
+
+I hope, they are self-explained. If there will be any problem with ADIF file itself, user will be informed via email. 
+
+Examples
+I'm pure Linux user and use 
+CQRLOG
+ for my daily logging. It has auto backup function which always after I close the program exports all QSO into ADIF file and stores into defined directory
+(/home/ok2cqr/Ubuntu One/cqrlog_zaloha on my computer). If I want to upload last log backup to HamQTH, I use this script:
+
+#!/bin/bash
+BACKUPDIR="/home/ok2cqr/Ubuntu One/cqrlog_zaloha/"
+USERNAME=ok2cqr
+PASSWORD=my_password
+
+cd "$BACKUPDIR"
+curl -F f=@`ls | tail -n 1` -F send_log=OK -F u=$USERNAME -F p=$PASSWORD https://hamqth.com/prg_log_upload.php
+That's all! I have an icon on the panel and when I click on it, it makes backup of my log to HamQTH. Very easy and powerfull. You can also create program
+to use Windows command line. I'm not so keen in windows scripting but if you are, please send me your script and I'll put it here. 
+
+Real-time QSO upload
+
+You can upload individual QSO to HamQTH logbook in real-time as well. Use POST request to 
+https://www.hamqth.com/qso_realtime.php
+ with these parameters:
+u - username
+p - password
+c - callsign (if empty, username as callsign will be used)
+adif - the QSO in ADIF format
+prg - name of your application (without version number)
+cmd - command to real time upload function (insert, update, delete) 
+
+The result will be send as HTTP status code with message in the body. The HTTP status codes are:
+
+list of 4 items
+403 Forbidden: Access denied. Your username and/or password was incorrect. The QSO will NOT be logged.
+500 Internal error: This may occurs if the server has any problem in general or there is a problem with your ADIF file. In the body should be more information
+what happened. The QSO will NOT be logged.
+400 QSO Rejected: QSO was rejected for some reason e.g. wrong band, already exists in database etc. The QSO will NOT be logged.
+200 QSO OK: QSO was successfully saved into database.
+list end
+
+HamQTH supports these ADIF fields:
+QSO_DATE, TIME_ON, TIME_OFF, CALL, FREQ, MODE, RST_S, RST_R, NAME, QTH, QSL_SENT, QSLSDATE, QSL_RCVD, QSLRDATE, QSL_VIA, IOTA, TX_PWR, ITUZ, CQZ, CONT,
+GRIDSQUARE, MY_GRIDSQUARE, STATE, CNTY, COMMENT, DXCC, BAND, LOTW_QSL_SENT, LOTW_QSLSDATE, LOTW_QSL_RCVD, LOTW_QSLRDATE, EQSL_QSL_SENT, EQSL_QSLSDATE,
+EQSL_QSL_RCVD, EQSL_QSLRDATE 
+
+All values should not be HTML escaped.
+Please DO NOT use this real time access to batch upload of thousands of QSOs. If your you are uploading log for the first time, upload whole ADIF file
+through the website. 
+
+New QSO
+
+HamQTH will accept new QSO record in ADIF format with at least QSO_DATE, TIME_ON, CALL, MODE, BAND, RST_S, RST_R fields. If you try to post less fields,
+you'll get HTTP status code 400 with error message in the body. 
+
+Update existing QSO
+
+To specify the QSO you want to update in the database, you have to post old values of qso date, time on, callsign and mode. Without these values server
+won't be able to find your QSO and update it. Old values are also part of ADIF ouput but with OLD_ prefix - OLD_QSO_DATE, OLD_TIME_ON, OLD_CALL, OLD_BAND,
+OLD_MODE. E.g. you want to update name in the QSO, send only all mandatory fields (OLD_QSO_DATE etc.) and NAME field. 
+
+Delete QSO
+
+Specify QSO to delete using OLD_QSO_DATE, OLD_TIME_ON, OLD_CALL, OLD_BAND and OLD_MODE field in ADIF output. 
+
+Please DO NOT use this real time QSO upload to batch delete of whole log. If you want to delete it, just disable log search function in your profile preferences.
+
+To be sure that your DXCC statistics will be correct, sending DXCC resp. OLD_DXCC field with every QSO is strongly recommended! 
+
+DX cluster spots
+
+HamQTH provides DX cluster spots feed in simple CSV format with this structure: 
+
+        Call^Frequency^Date/Time^Spotter^Comment^LoTW user^eQSL user^Continent^Band^Country name
+    No registration needed, just use this link:
+
+https://www.hamqth.com/dxc_csv.php?limit=10
+ where: 
+
+table with 2 columns and 2 rows
+limit
+maximim of downloaded spots, default is 60, max is 200 
+band
+return spots only for specified band e.g. dxcc_csv.php?limit=10&band=80M retuns last 10 spots from 80M band
+table end
+
+You'll get this:
+
+CT1ISH^21255.0^PI4ZU^DX & Contest Club Station^1311 2015-02-28^^^EU^15M^Netherlands^263
+IZ8GNR^28478.0^H91T^NA-072^1310 2015-02-28^^^NA^10M^Panama^88
+R8WZ^28491.2^DR50RRDXA^tnx QSO^1309 2015-02-28^^^EU^10M^Germany^230
+IK2AHU^14315.0^IW2NXI/P^dai-lb1214^1309 2015-02-28^^^EU^20M^Italy^248
+IZ4AFM^14315.0^IW2NXI/P^DAI LB1214^1309 2015-02-28^^^EU^20M^Italy^248
+DL5JK^28495.0^OA6Q^Georg 5/9 wie jedes Jahr^1309 2015-02-28^L^E^SA^10M^Peru^136
+HA8IE^10110.0^HV0A^pse activity on 30m!^1309 2015-02-28^L^^EU^30M^Vatican^295
+HA8WX^28405.0^TO6D^simplex^1309 2015-02-28^L^^NA^10M^Guadeloupe Island^79
+W3LPL^28003.6^A71EM^Heard in MD^1309 2015-02-28^L^E^AS^10M^Qatar^376
+  The latest number is ADIF country ID. 
+Please do not refresh the page often then every 10 seconds. Spots from DX spider are saved every 15 seconds so shorter time period won't return any new
+spots. 
+
+Simple award verification protocol
+
+Numerous web services and web sites all over the world provide electronic storage of “station logs”. Whatever we call it, eQSL, LoTW, all of them are but
+centrally managed collections of ham radio station logs in databases. Small amateur radio societies, often issue awards for contacts with their members.
+“Worked all members” is the simplest possible award imaginable. A really small ham radio society could theoretically avoid checking QSL cards, by inspecting
+their members’ log books .... continue in 
+SAVP-SimpleAwardVerificationProtocol-short.pdf
+ and 
+SAVPGuidelines.pdf
+ written by Jindra, OK4RM. 
+
+Example
+HTTP client will send verification request using GET method: 
+
+https://www.hamqth.com/verifyqso.php?mycall=j49c&hiscall=ok2cqr&date=20130620&band=12M
+The result is described in specification above.
+
+JSON DXCC search
+
+The same like 
+XML DXCC search
+ but it returns data in JSON. 
+
+Example
+https://www.hamqth.com/dxcc_json.php?callsign=U3AP
+
+and you'll get this:
+
+{"callsign":"U3AP", "name":"Russia (European)", "details":"Russia (European), Gorod Moskva (MA), World War II. Veteran", "continent":"EU",
+"utc":"-3", "waz":"16", "itu":"29", "lat":"55.75", "lng":"37.63", "adif":"54"} 
+
+If you find any bug or have any problem with developer's interface, please let me know via petr [at] ok2cqr.com. Everything is provided for free, but please
+put 
+HamQTH banner
+ on your page, tell your friends about us, or consider small donation. Thank you! 
+
+Changelog
+2.6 - (28 Jan 2015) added qslrdirect field, documentation updated
+2.5 - (11 Jan 2015) removed self spot interface, added country name and band to CSV dxcluster spots
+2.4 - (29 Jun 2014) added JSON DXCC search
+2.3 - (25 jun 2013) added Simple award verification protocol
+2.2 - (12 may 2013) added self spotting inteface 
+2.1 - (10 may 2013) added dxcluster inteface 
+2.0 - (20 feb 2013) added social network fields
+1.9 - (18 nov 2012) real-time QSO upload interface added
+1.8 - (29 sep 2012) added access to bio information through XML interface
+1.7 - (02 sep 2012) added log upload interface
+1.6 - (28 jun 2012) added ADR and ADR_ADIF fields
+1.5 - (22 apr 2012) added XML DXCC search
+1.4 - (02 mar 2012) added latitude, longitude, utc_offset and continent fields
+1.3 - (07 oct 2011) added prg parameter into XML search query
+1.2 - (26 sep 2011) added country and adr_country fields
+1.1 - (01 sep 2011) added IOTA field 
+content information
+© Petr Hlozek, 
+OK2CQR
+HamQTH is a free callsign database which provides free callsign lookups. It also has an interface for application delevelopers. Everything provided by
+this website is free of charge and doesn't have any limits.
+
+Contact us       
+FAQ       
+News   
+Revolvermaps Plain DHTML 1.0.7 frame
+?target=enlarge&i=0dha5avdbpo&dm=2
+Revolvermaps Plain DHTML 1.0.7 frame end
+
+Our partners
+images/dxcoffee     
+images/remoteqth
+
+Follow us
+Twitter
+Facebook
+Google+
+
+For developers
+Supported apps
+Statistic
+Banners
+Languages
+content information end

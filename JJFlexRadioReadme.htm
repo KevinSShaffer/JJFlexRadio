@@ -1,0 +1,1750 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>JJFlexRadio Help</title>
+</head>
+<body>
+	<h1>JJFlexRadio</h1>
+	<h2><a id="Contents">Contents</a></h2>
+	<ul>
+		<li><a href="#acknowledgements">Acknowledgements</a></li>
+		<li><a href="#GettingStarted">Getting Started</a></li>
+		<ul>
+			<li><a href="#theFlex">General Information about the Flex Radios</a></li>
+			<li><a href="#initialStartup">Initial Startup</a></li>
+		</ul>
+		<li><a href="#rigSelector">the Rig Selector</a></li>
+		<li><a href="#Main">The main window</a></li>
+		<li><a href="#FreqDisp">The Meter and Frequency Display</a></li>
+		<ul>
+			<li><a href="#sliceControl">Controling the Slices</a></li>
+			<li><a href="#fromKeyboard">Using the Keyboard in the Frequency Display</a></li>
+		</ul>
+		<li><a href="#OtherFields">Other screen fields</a></li>
+		<li><a href="#RigMemories">The Rig's Memories</a></li>
+		<li><a href="#sharing">Rig Sharing aka MultiFlex</a></li>
+		<li><a href="#profileMgmt">Profiles and Profile Management</a></li>
+		<li><a href="#sendingCW">Sending CW</a></li>
+		<li><a href="#Logging">Logging</a></li>
+		<ul>
+			<li><a href="#LogCharacteristics">The Log Characteristics Dialogue</a></li>
+			<li><a href="#LogWindow">Some general Information About the Log Window</a></li>
+			<li><a href="#LogJump">Going to Log Fields</a></li>
+			<li><a href="#LogSearch">Searching the Log</a></li>
+		</ul>
+		<li><a href="#Menu">The Menus</a></li>
+		<ul>
+			<li><a href="#Actions">The Actions menu</a></li>
+			<li><a href="#ScreenFields">The Screen Fields Menu</a></li>
+			<li><a href="#operations">The Operations Menu</a></li>
+			<li><a href="#Help">The Help menu</a></li>
+		</ul>
+		<li><a href="#Scanning">The Scanning Feature</a></li>
+		<ul>
+			<li><a href="#lscan">Linear Scanning</a></li>
+			<li><a href="#mscan">Memory Scan</a></li>
+		</ul>
+		<li><a href="#Panning">The Pan Adapter</a></li>
+		<li><a href="#RemoteFlex">Using the Flex Radio Remotely</a></li>
+		<li><a href="#cluster">DX Cluster</a></li>
+		<li><a href="#wattmeter">External Wattmeter Support</a></li>
+		<li><a href="#flexControl">The FlexControl knob</a></li>
+		<li><a href="#Commands">JJFlexRadio Commands</a></li>
+		<li><a href="#moving">Moving to another computer</a></li>
+		<li><a href="#support">Getting Support</a></li>
+		<li><a href="#enhance">Enhancements and Fixes</a></li>
+		<li><a href="#bugs">Known Bugs and Limitations</a></li>
+	</ul>
+	<h2><a id="acknowledgements">Acknowledgements</a></h2>
+	<p>I would like to acknowledge the following folks who helped me with the program.</p>
+	<dl>
+		<dt>Frank Ventura, N1FMV</dt>
+		<dd>Thanks to Frank for not only letting me use his Flex 6300 to test the built-in antenna tuner, but for sending me the rig as well.</dd>
+		<dt>Flex Radio Systems</dt>
+		<dd>
+			Thanks to all the people at
+			<a href="http://www.flexradio.com/">Flex Radio Systems</a>
+			for their assistance with a few issues here and there.
+		</dd>
+	</dl>
+	<p>Thank you to everyone who helped with this project.</p>
+	<h2><a id="GettingStarted">Getting Started</a></h2>
+	<p>
+		Thank you for using JJFlexRadio.
+		This program is used to monitor and control Flex Radio's amateur radio equipment.
+		It is primarily designed for use by blind amateur radio operators.
+	</p>
+	<p>
+		JJFlexRadio is optimized for use with a braille display, preferably one with at least 40 cells.
+		I originally wrote this program because I do not like listening to a speech synthecizer while trying to listen to the radio!
+		With the program, I am able to turn my synthecizer off, and just use the braille display to monitor the rig and do the logging.
+	</p>
+	<p>Note that JJFlexRadio does not use braille or speech directly, rather it relies on your screen reader to manage those devices.</p>
+	<p>The Pan Adapter function of JJFlexRadio really requires a braille display, and will not work well with speech.</p>
+	<h3><a id="theFlex">General Information about the Flex Radios</a></h3>
+	<p>
+		A Flex radio is a radio transceiver produced by <a href="https://www.flexradio.com/">Flex Radio Systems.</a>
+		This program currently supports only the 6000 series systems.
+	</p>
+	<p>
+		Flex produces software defined radios, SDRs.
+		An SDR works by digitizing the supported radio frequency spectrum,
+		and then breaking it up into useable "slices".
+		For example, consider a receiver on 20 meters at 14.200 USB.
+		The receiver is receiving a slice of the radio spectrum at 14.200 KHz, with the low filter set to something like 100 KHz, and the high filter set to perhaps 2800 KHz.
+		Thus the width of this slice is 2700 KHz.
+		We refer to this as a "slice".
+		Think of a receiver as defining a slice out of the radio spectrum.
+	</p>
+	<p>
+		The number of slices a radio can have depends upon the radio model.
+		The Flex 6300 and 6400 radios support 2 slices, the 6500 and 6600 have 4 slices, and the 6700 has 8 slices.
+		Any number of slices can be received at a time, (e.g.) you could listen to a net on 20 meters, and a local AM radio station simultaneously.
+	</p>
+	<p>
+		Another term you might run across is a spectral capture unit, SCU.
+		This is the component that digitizes the spectrum.
+		While most Flex radios only have one SCU,
+		higher end rigs, such as the 6600 and 6700 have 2 SCUs, and allow you to, for example, have something known as diversity reception.
+		This allows you to use 2 receive antennas at once, which helps mitigate conditions like QSB, or fading, since
+		QSB is usually caused by signals changing polarization.
+		At present, JJFlexRadio doesn't support diversity reception.'
+	</p>
+	<h3><a id="initialStartup">Initial Startup</a></h3>
+	<p>
+		When JJFlexRadio starts up for the first time, you'll see a welcome screen.
+		From here you can read the documentation, configure JJFlexRadio, import a previously saved JJFlexRadio configuration, or exit.
+		If you exit JJFlexRadio without configuring it, you'll see the Welcome screen again when you next run the program.
+		It is recommended that you read the documentation first, but then you're doing that now.
+	</p>
+	<p>
+		Use the "Import JJFlexRadio Configuration" item to import a previously saved JJFlexRadio setup,
+		see <a href="#moving">Moving to another computer.</a>
+		When the import is complete, you will be able to select your radio as you did on the other computer.
+	</p>
+	<p>The rest of this discussion assumes you're configuring a new instance of the program.</p>
+	<p>
+		When you configure JJFlexRadio, you will be asked to enter some information about yourself and optionally your log file.
+		This information defines an operator.
+		If, for example, you're in a household with multiple hams, each person will likely want his or her own log file.
+	</p>
+	<p>
+		The first screen asks for your full name, handle, QTH, and log file.
+		For your QTH, something like "City, ST" is recommended, e.g. "Austin, TX", without the quotes.
+		The QTH should be what you'd send for your QTH on CW.
+	</p>
+	<p>
+		You are then asked for your license class.
+		This may be none, novice, technition, general, advanced or extra.
+	</p>
+	<p>
+		Following this is a button entitled "Log Characteristics".
+		You can press this to specify a log file and its characteristics, or you can elect to wait til later.
+		Log characteristics is discussed later in <a href="#LogCharacteristics">the section on log characteristics.</a>
+	</p>
+	<p>
+		Following this, you can specify your braille display size in cells.
+	</p>
+	<p>
+		You may then enter the address and login name for your preferred DX cluster.
+		This is discussed later under <a href="#cluster">DX Cluster.</a>
+	</p>
+	<p>
+		Leave the "Default Operator button checked, and press the Add button.
+		You have just defined the default operator.
+		You will now be taken to the Rig Selector screen.
+	</p>
+	<h2><a id="rigSelector">the Rig Selector</a></h2>
+	<p>
+		Flex radios connect over a network.
+		This may be a local area network, a LAN, or the internet, known as a wide area network, WAN, and may contain multiple rigs.
+		It may even be a network composed of your computer and the radio, if the rig is plugged into your computer using an ethernet cable, for example.
+		Note that if connecting to a radio over the internet, you must provide a userID and password for authentication.
+	</p>
+	<p>
+		The rig selector allows you to select the radio you wish to use.
+		It can also be brought up from the Actions menu.
+		When it first comes up, you are shown the list of radios, if any, available on your local area network, LAN.
+	</p>
+	<p>
+		If you want to use a radio over the internet, the WAN, it must have previously been setup using SmartSDR's setup procedure.
+		You might find it helpful to have sighted assistance for this.
+		There is one test step, if you choose to do it, where you must look for a green light.
+		Apart from that, you can likely manage it without assistance.
+		Anyway, when you press the "Remote" button,
+		if you're not logged in, you'll need to enter your login credentials.
+		Note that there is a "Login" button following the Remote button, that'll force a login.
+		You may use this if you need to log back in after a logout, or log into a different account.
+	</p>
+	<p>
+		Connect with either the "Connect" button, or by simply hitting Enter when the rig is selected, or from the context menu for the selected rig.
+		The context menu is brought up with a right mouse click or shift-F10.
+		You may also choose the LowBW button for a low bandwidth connection.
+	</p>
+	<p>
+		If you don't want to select a radio at this time, you may just hit escape to use other JJFlexRadio functions, such as logging.
+	</p>
+	<p>
+		You may also, using the selected rig's context menu, specify that a radio is automatically connected when JJFlexRadio comes up, and the radio is available.
+		If the context menu has an "Auto connect on" item, that radio can be auto-connected.
+		For the radio that is currently auto-connected, if any, the menu item will be "Auto connect off".
+		You'll see this only if the rig selector is brought up after the program is started.
+	</p>
+	<p>
+		For example, if you indicate a radio is to be auto-connected, this will take effect when the program is subsequently started, (i.e.) auto-connect only happens when the program is brought up.
+		If the radio is on a remote network, on the WAN as opposed to your LAN, you'll need to click the remote button to have it auto-connected.
+		If you again bring up the rig selector, from the Actions menu, you can then turn auto-connect off for that radio if you wish.
+		You may designate a radio to be auto-connected from the initial rig selector, or from a subsequent selector.
+		Only one radio can be auto-connected.
+	</p>
+	<h2><a id="Main">The main window</a></h2>
+	<p>This discussion assumes a radio is connected.</p>
+	<p>
+		The main window is composed of several fields.
+		There are however 5 main fields.
+		The first is the meter and frequency display.
+		The second is the operating mode, (e.g.) USB.
+		This is followed by several fields which largely depend upon the mode, although some are always there.
+		These are discussed in somewhat more detail in the <a href="#OtherFields">Other screen fields</a> section.
+	</p>
+	<p>
+		Finally there are always three fields present at the bottom, "receive text", "sent text", and "status".
+		The <a href="#rcvdtext">"received text"</a> field is currently unused.
+		When in CW mode, typing text into the "sent text" field will send the characters.
+		The last field is a "status" field.
+		Currently it shows:
+		<br />pwr: on/off
+		<br />Memories: # of memories
+		<br />scan: off/running/paused
+		<br />Knob: on/off/locked (FlexControl Knob)
+		<br />log: log file name
+	</p>
+	<p>There are some predefined keyboard commands that make it easier to navigate the main window.</p>
+	<dl>
+		<dt>F1</dt>
+		<dd>Function key 1 is used to list all the keyboard commands.  Press escape to exit this display.</dd>
+		<dt>F2</dt>
+		<dd>
+			This takes you to the main frequency display from any field in the main window.
+			If scanning, it also pauses the scan.
+		</dd>
+		<dt>Shift-F2</dt>
+		<dd>If scanning, this resumes a paused scan.</dd>
+		<dt>F3</dt>
+		<dd>F3 takes you to the "received text" field from any field in the main window.</dd>
+		<dt>F4</dt>
+		<dd>This takes you to the "sent text" field from any field in the main window.</dd>
+		<dt>ESC</dt>
+		<dd>In general, the escape key exits a window, except for the main window.</dd>
+		<dt>Alt-F4</dt>
+		<dd>Exit JJFlexRadio from the main window.</dd>
+	</dl>
+	<h2><a id="FreqDisp">The Meter and Frequency Display</a></h2>
+	<p>
+		The meter and frequency display is the first item on the main window, and where you'll want to be focused on for most operation.
+		It is actually one text box, so it shows up as one field, and works very well with a 40-cell braille display.
+		It is good to learn this display, as information is maximized, and there are no field prompts or headers.
+	</p>
+	<p>
+		I'll begin by just showing some typical output, and describing the information shown.
+		Then I'll go into detail about the various fields.
+	</p>
+	<pre>
+	Sm   7  0  7.028.420  rrrr  xxxx
+	</pre>
+	<p>
+		This shows the rig on 7.028420 MHz, or 7028.420 KHz, however you prefer to think of it.
+		The format of the frequency is mm.kkk.hhh, where m is the MHz, megahertz, value, k is the KHz, kilohertz value, and h is the Hz, Hertz value.
+		Note that the frequency is front and center, so to speak.
+	</p>
+	<p>
+		Over on the left side of the display are 2, 4, or 8 characters that show the disposition of the slices, or receivers,
+		see <a href="#sliceControl">Controling the Slices,</a> the next section.
+		I'll just say here that the "SM" tells us that the first slice is sounding, and the other one is muted.
+		The reason there are 2 characters is because this radio has 2 slices, so it's a 6300 or 6400 radio.
+	</p>
+	<p>
+		Moving to the right, we see a "7".
+		This is the s-meter reading,
+		so I've got a pretty good noise level.
+	</p>
+	<pTo the right of the s-meter is a "0" , indicating that slice 0, the first slice, is active.
+	<p>The RIT, "RRRR", and XIT, "XXXX" are turned off.</p>
+	<p>Also, if I hit the tab key, I'll show the mode as CW.</p>
+	<pre>
+	Sm   7  0  7.028.420  +0040  xxxx
+	</pre>
+	<p>This is the same as above, except now the RIT is on, and set to +40 hz.</p>
+	<pre>
+	sM   7  0  7.028.420  rrrr  -0040
+	</pre>
+	<p>
+	Here the XIT is on and set to -40.
+	Also, the 'M', cap M, indicates that slice 1 is the transmit slice.
+	</p>
+	<pre>
+	Sm +10  m  1  7.200.000  rrrr  xxxx
+	</pre>
+	<p>
+	Here we have an "M" in place of the slice number, which indicates a memory channel is active.
+	In fact, it's channel 1, the second memory, at 7.2 MHZ.
+	</p>
+	<p>Also note the s-meter is "+10", which means s9 plus 10.</p>
+	<pre>
+	Sm   8 V0  7.200.000  rrrr  xxxx
+	</pre>
+	<p>
+	Now we've set slice 0 to 7200 KHz, and we've turned on the Vox!  Thus the "V".
+	It's very important to note when the Vox is on, especially on LSB, which is our mode as I can tell by tabbing to the mode.
+	</p>
+	<pre>
+	sS   7SV0  7.200.000  rrrr  xxxx
+	</pre>
+	<p>
+	Now here, not only is the Vox enabled, but the slices are Split, note the "S" immediately to the right of the s-meter, and right before the "V".
+	Slice 1 is the transmit slice, note the "sS" on the left.
+	Ok, I'll admit it, I've accidentally transmitted on an unintended frequency, because I didn't pay enough attention to whether or not my VFOs were split.
+	JJFlexRadio puts that right under your finger tips.
+	Also notice that slice 1 isn't muted.
+	</p>
+	<p>Now let's turn off Vox and Split.</p>
+	<pre>
+	Sm   7  0  7.200.000  rrrr  xxxx
+	</pre>
+	<p>
+	NOTE:  If you're using JAWS 14 through 17, you will need to uncheck "Enhanced Edit Support" to get the continuous frequency display to work.
+	Versions prior to 14, and after 17, don't have this problem.
+	To uncheck this, use JAWSKEY-F2 and select "Settings Center".
+	Search for the word "Enhanced", and uncheck "Enhanced Edit Mode".
+	</p>
+	<p>And, here's a radio with 4 slices, a 6500 or 6600.</p>
+	<pre>
+	Smmm   7   0  7.200.000  rrrr  xxxx
+	</pre>
+	<h3><a id="sliceControl">Controling the Slices</a></h3>
+	<p>
+	Think of a slice as a separate receiver.
+	It's similar to having multiple VFOs, (e.g.) A and B, but it's truely multiple receivers.
+	In fact, you may actually listen to all of them at once, although you'll likely not do that.
+	A slice's audio may be manipulated using the cells at the very left of the frequency display.
+	For each slice your radio has, there will be a corresponding 's' or 'm' on the left of the display, 's' for sounding, and 'm' for muted.
+	You may toggle the sounding/muted state of a slice with the space bar, or specify it directly by pressing 's' or 'm'.
+	You can make a slice the active slice, the receive slice, by pressing the letter 'a'.  't' makes it the transmit slice, and 'x' assigns both the active and transmit slices, (i.e.) transceive mode.
+	Note that when the transmit and receive, or active, slices are different, this is known as Split mode.
+	Also note that the transmit slice is shown with an uppercase 'S' or 'M'.
+	</p>
+	<p>
+	Also, if only one slice is sounding, it becomes the active slice.
+	</p>
+	<p>
+	A ".", period, indicates that this slice is free,
+	see <a href="#sharing">the section on rig sharing.</a>
+	</p>
+	<p>
+	A "-", dash, indicates this slice is in use by another station,
+	see <a href="#sharing">the section on rig sharing.</a>
+	</p>
+	<p>A "\", backslash, for the transmit VFO indicates someone is transmitting,
+	see <a href="#sharing">the section on rig sharing.</a></p>
+	<h3><a id="fromKeyboard">Using the Keyboard in the Frequency Display</a></h3>
+	<p>
+	Now for the cool stuff you can do from the keyboard.
+	I'll admit this is easier with a braille display.  I can use the cursor routing with my Pacmate 40 display.
+	</p>
+	<p>
+	First, place the cursor on a digit of the frequency, and use the up and down arrow keys to change it.
+	For example, if you were on 7200 KHz, and place your cursor on the right-most KHZ digit, and cursor down 5 times, you'll be on 7.195.
+	If you place your cursor on the 7, the MHZ digit, and cursor up once, you'll be on 8.200.
+	</p>
+	<p>Note that you can't change the frequency from the keyboard if transmitting.</p>
+	<p>
+	<a id="freqDigit">You may also place your cursor on a digit and enter a digit, 1 through 9, from the keyboard.</a>
+	This will, by default, add that digit to the frequency according to the cursor placement.
+	For example, if you're focused on the KHz digit, and enter a 5, 5 KHz will be added to the frequency.
+	If you enter a minus sign, then the subsequent entries are subtracted, until you enter a plus sign.
+	</p>
+	<p>
+	If however you're in split VFO mode, the value applies to the transmit VFO.
+	This is very handy for instantly setting your transmit VFO 2 KHz above the receive VFO, for example.
+	</p>
+	<p>Ok, go back to 7.200 please.</p>
+	<p>
+	Now place your cursor on the 0 that stands alone to the right of the S-meter reading.
+	This indicates we're using slice 0.
+	Press the up arrow, cursor up, and notice you switch to the next slice.
+	Assuming you have two slices, you'll get back to slice 0 on the next press.
+	You can also change using the down arrow key.
+	</p>
+	<p>
+	Also note that the switched-to slice is unmuted, and generally the other slice is now muted.
+	For example:
+	</p>
+	<pre>
+	mS   7   1  7.230.000  rrrr  xxxx
+	</pre>
+	<p>Press the down arrow to go back to slice 0.</p>
+	<p>
+	Now press the "M".
+	If memories have been setup, you should now be in memory mode.
+	In my case, it'll be on memory 1 at 7.200.
+	</p>
+	<p>
+	Now place your cursor on the memory number, and go through the memories with your arrow keys.
+	</p>
+	<p>
+	Now place your cursor back on the "M", and hit the "V" key.
+	This will switch out of memory mode.
+	</p>
+	<p>
+	Placing the cursor over the RIT (r) or XIT (x) fields and hitting space activates the RIT or XIT.
+	The cursor up and down keys work here like they do in the frequency field.
+	</p>
+	<p>Here's the list of fields that have associated key functions:</p>
+	<dl>
+	<dt>The characters to the far left of the display</dt>
+	<dd>
+	These control the 2, 4, or 8 slices.
+	Slices are numbered starting with 0, (i.e.) a radio with 2 slices has slices 0 and 1.
+	The left-most character refers to slice 0.
+	The corresponding field for a slice will usually either be "s" or "m", for sound or muted.
+	You may toggle this with the space bar.
+	For example, if you are listening to slices 0 and 1, the left-most characters will be "Ss".
+	This assumes slice 0 is the transmit slice.
+	The following keys are valid:
+	<ul>
+	<li>spacebar - mute/unmute the corresponding slice.
+	<li>l - put the audio for the slice in the left sterio channel</li>
+	<li>r - put the audio for the slice in the right sterio channel</li>
+	<li>c - center the audio</li>
+	<li>pageup/pagedown - move the audio left or right</li>
+	<li>a - Make this the active slice.</li>
+	<li>t - Make this the transmit slice.</li>
+	<li>x - Make this the transceive slice, active and transmit.</li>
+	<li>. - Free or allocate this slice, see <a href="#sharing">the section on sharing.</a></li>
+	</ul>
+	<p>
+	Important:
+	It is possible to make a slice the active or transceive slice while it is muted.
+	Make sure you're listening to the correct slice!
+	</p>
+	<p>
+	Note you can also copy one slice to another.
+	To copy slice 0 to slice 1, place your cursor on the character corresponding to slice 0, the left-most character.
+	When you press a '1', one, slice 0 is copied to slice 1.
+	</p>
+	</dd>
+	<dt><a id="Split">Split</a></dt>
+	<dd>
+	Two spaces to the left of the slice number, and immediately to the right of the s-meter,
+	<ul>
+	<li>
+	space or up/down - toggle split mode.
+	However, if showing the transmit VFO, revert to showing the receive VFO.
+	</li>
+	<li>
+	s - Turn split mode on.
+	However, if showing the transmit VFO, revert to showing the receive VFO.
+	</li>
+	<li>
+	t - if in split mode, toggle showing the transmit VFO.
+	You can change the transmit VFO at this time.
+	</li>
+	</ul>
+	<p>
+	Note that you may wish to hear both slices when in split mode.
+	In fact, JJFlexRadio will automatically turn on the sound for the transmit slice.
+	</p>
+	</dd>
+	<dt>Vox</dt>
+	<dd>
+	One space left of the slice number.
+	<ul>
+	<li>space or up/down - toggle the Vox, aka breakin on CW.</li>
+	</ul>
+	</dd>
+	<dt><a id="VFO">Slice</a></dt>
+	<dd>
+	A slice value is always displayed to the left of the frequency, unless in memory mode.
+	This will be a slice number starting with 0, or "m" for memory mode.
+	<ul>
+	<li>up/down - next/previous slice.</li>
+	<li>m - toggle memory mode.</li>
+	<li>v - show the slice number</li>
+	</ul>
+	</dd>
+	<dt><a id="Frequency">frequency</a></dt>
+	<dd>
+	Shown as mmm.kkk.hhh.
+	<ul>
+	<li>
+	up/down arrow, 'd', or 'u' - Change the digit at the cursor.
+	The letters 'u' and 'd' move the frequency up or down respectively.
+	</li>
+	<li>Enter a digit 1 through 9, <a href="#freqDigit">discussed earlier.</a></li>
+	<li>Hit "k" to round the frequency to the nearest KHZ.</li>
+	<li>
+	S and T - work like they do in the <a href="#Split">Split</a> field.
+	An 's' will put you in split mode, viewing the receive frequency.
+	A 't' will turn on split mode, and view, and allow you to change, the transmit frequency.
+	</li>
+	<li>The 'v' key toggles the Vox or breakin on/off.</li>
+	<li>
+	The 'x' toggles transmit on/off.
+	This is especially handy when working remotely or using pc audio.
+	In this case, you don't need to tab over to the transmit button to engage the transmitter.
+	</li>
+	</ul>
+	<p>Note that from the frequency you can go into and out of split mode, and view the receive or transmit frequency.</p>
+	</dd>
+	<dt>offset direction</dt>
+	<dd>
+	Immediately to the right of the frequency.
+	Active when in FM mode only.
+	<ul>
+	<li>blank - no offset (symplex)</li>
+	<li>+ (plus sign) - plus offset</li>
+	<li>- (minus sign) - minus offset</li>
+	</ul>
+	</dd>
+	<dt>RIT/XIT fields (rrrr and xxxx)</dt>
+	<dd>
+	Placing the cursor on one of these and pressing space activates or deactivates the RIT or XIT.
+	You may then place your cursor over the digit you wish to change and use the up or down arrows to change the frequency, as you do the main frequency.
+	You may also use the digits 1 through 9, plus or minus as with the frequency;
+	'v' turns on VOX/Breakin, and 'X' toggles transmit mode.
+	<p>Note that RIT and XIT are in HZ.</p>
+	</dd>
+	<p>
+	If focused on the RIT, use the = (equal sign) to set the XIT to the RIT frequency and clear the RIT.
+	This comes in handy when you are, for example, trying to work a DX station that's not using split frequencies, but he's working a station not exactly on his frequency.
+	</p>
+	</dl>
+	<p>
+	Hopefully this has given you a good sense of the main frequency display.
+	Remember, Windows considers this as one field.
+	Thus tab will move to the next field, the mode.
+	</p>
+	<h2><a id="OtherFields">Other screen fields</a></h2>
+	<p>
+	If you tab to the field following the main frequency display, you'll be at the Mode field.
+	This shows the operating mode, and the mode can be changed with the arrow keys.
+	</p>
+	<p>
+	The next one or two fields are for antenna tuning.
+	If your radio has the ATU unit, the first field indicates whether the tuner is active, and the second one starts tuning.
+	If you don't have the ATU feature, there is just one field to start tuning.
+	If using the ATU, tuning will stop automatically when a match is found or the tuner gives up.
+	If not using the ATU, you must press the button again to stop tuning.
+	In this case, while tuning, the SWR is shown, and is shown until you exit the field, so you can easily see what SWR you ended up with.
+	Many of the following fields are modified using the arrow keys.
+	I won't discuss each field in detail here, because they're somewhat rig dependent.
+	It is certainly worth mentioning though that many of the fields that follow the mode are themselves mode dependent, and only fields relevant to the current mode are shown.
+	Also, it is possible to access most of these fields using the <a href="#ScreenFields">Screen Fields menu.</a>
+	</p>
+	<p>
+	Many fields can be changed with the up and down arrow keys.
+	The change increment is field dependent.
+	Also, many numeric fields may be entered directly.
+	For example, you can enter a keyer speed of 17, for 17 wpm, rather than having to arrow to the desired values.
+	Some fields however, which are not numeric, or have specific values that are not necessarily liniar,must be selected with the arrow keys.
+	</p>
+	<p>
+	If your Flex has an ATU, automatic tuner unit, you'll see the Tuner field which can be "true" or "false", indicating whether you want to use the internal ATU, or an external tuner.
+	I recommend that you always use one or the other, the ATU or an external tuner.
+	Note that you'll need to use an external tuner if using an amplifier.
+	If you've were using the internal ATU when you last shut down JJFlexRadio, this field will be "true" when you bring it up again.
+	Also, if using the ATU, the Ant Tune button will show the tuner status, or tell you if a memory is in use.
+	If the button's text shows "Ant tune", no memory is in use for this frequency.
+	If one is in use, the value will show "Ant tune mem".
+	If bypassing the ATU (i.e.) using an external tuner, during and after tuning, the button will show you the current SWR.
+	</p>
+	<p>
+	There is a dialog for managing the Flex ATU memories.
+	The dialog is called "Tuner memories", and is accessed from the Operations menu.
+	It allows you to turn tuner memories on or off, and to clear all the memories.
+	If using an external tuner, turn tuner memories off.
+	</p>
+	<p>
+	The Flex radios don't use menus, but some of the screen fields are buttons that may bring up dialogues.
+	Some fields to note are:
+	</p>
+	<dl>
+	<dt>Low and High</dt>
+	<dd>
+	These control the filtering.
+	As their names imply, they allow you to filter the low and high bandpass limits.
+	For example, for upper sideband, USB, you'll see values like 100 and 2800.
+	You can change these with the up and down arrow keys in steps of 100 HZ.
+	Note that for lower sideband, LSB, the equivalent values are -100 and -2800.
+	For CW, the default values are -200 and 200.
+	You may key these values in directly.
+	</dd>
+	<dt>export/import</dt>
+	<dd>
+	This lets you export your radio's settings, and import them at a later time.
+	You might export your settings to another radio, or export them in order to restore them after a reset.
+	<p>Unfortunately, this doesn't work for remote radios, (i.e.) those on the internet as opposed to your LAN.</p>
+	</dd>
+	<dt>TNF - Tracking notch filter&trade;</dt>
+	<dd>
+	The tracking notch filter is a feature of Flex radios which allows you to create a filter that persists for a given frequency.
+	It is handy if you have a carrier or birdy at a fixed frequency, and want to filter it out.
+	If you click the TNF button, you are in a dialogue containing a list of the TNFs you have created.
+	You can click the "Add" button to add another TNF at the rig's current frequency.
+	<p>
+	For the selected TNF, you can then change the width in HZ, the depth, 1, 2, or 3, and whether the TNF is permanent.
+	If TNFs are turned on, and they are by default, You will be able to hear the effect of any changes you make to a TNF immediately.
+	Also, unless you make a TNF permanent, it will be deleted when the radio is powered off.
+	</p>
+	</dd>
+	<dt>TNF off/on</dt>
+	<dd>There is another button that allows you to turn all TNFs off or on, they're on by default.</dd>
+	<dt>RXEq and TXEq buttons</dt>
+	<dd>
+	If the mode is a phone mode, such as USB, you can bring up a dialogue allowing you to set audio equalization values for receive or transmit.
+	There are 8 bands, or octaves, which you can very.
+	</dd>
+	</dl>
+	<h2><a id="RigMemories">The Rig's Memories</a></h2>
+	<p>
+	Flex memories differ from most other rigs, because they are completely dynamic, and there is not a fixed number of them.
+	For example, for the Kenwood radios, memory 10 exists, whether or not it is empty.  There are a fixed number of memories.
+	For the Flex radios, a memory is simply an item on a list of memories.
+	This list contains only used, or non-empty, memories.
+	</p>
+	<p>
+	When you bring up the flex memories dialogue, you are in a list of the available memories.
+	This list is sorted by memory group and name, or frequency if unnamed.
+	If you've selected a memory in this list, and then press enter, you are taken to that memory.
+	</p>
+	<p>
+	The values stored for a memory by JJFlexRadio are, frequency, mode, Low, High, Power, Name, Owner, and Group.
+	In addition, for FM modes you can set the tone mode, off or CTCSS; tone frequency; squelch, on or off; squelch level; offset direction, off, minus or off; and the offset in KHZ.
+	</p>
+	<p>
+	To add a memory, first set the radio with the values you want, then bring up the memories dialogue and click the add button.
+	For example, to add a 6-meter FM repeater at 53.670 you might:
+	<ol>
+	<li>Set the frequency to 53.670 MHZ.</li>
+	<li>Set the mode to fm.</li>
+	<li>Set the tone mode to CTCSS, and the frequency to 103.5.</li>
+	<li>Set the squelch to on.</li>
+	<li>Bring up the memories dialogue and press the "Add" button.</li>
+	<li>Set the Name to "my 6-meter repeater" and the group to "6m".</li>
+	</ol>
+	<p>
+	To set the name or group, enter the value you want, and then either leave the field with the tab key, or press Enter.
+	This also applies to most of the other fields.
+	Some fields, such as the mode, tone mode, and tone frequency, you just set with the arrow keys.
+	</p>
+	</p>
+	<p>
+	By default, the Name and Group are blank.
+	Note that at present, the Owner field isn't used by JJFlexRadio, but it is preserved.
+	The Name and group fields are used to position the memory in the list.
+	Memories with the same group name appear together, sorted by name.
+	</p>
+	<p>
+	If you put an "m" in the VFO field of the frequency display, the radio enters memory mode.
+	The number shown as the memory channel is really the index of the current memory within the memory sort order.
+	Arrowing up and down with the cursor positioned on this memory number will move up and down through the sort order.
+	Note that the Flex radios don't have a memory mode as such.
+	The current slice is set to the selected memory.
+	</p>
+	<h2><a id="sharing">Rig Sharing aka MultiFlex</a></h2>
+	<p>
+	Starting with version 3, you can share your radio with one other user.
+	To do that, you need to free up at least one slice.
+	When JJFlexRadio comes up, you are given all available slices on the radio.
+	If, for example, your radio has 4 slices, you'll see "Smmm" on the left initially.
+	If you want to share your radio, you must free up at least one of the slices.
+	You do this by moving your cursor onto the letter for the slice to free, and pressing a '.', period.
+	Then you'll see "Smm." on the left.
+	If you then free another slice, you'll see "Sm..".
+	Note that you cannot free either the active or transmit slices.
+	</p>
+	<p>
+	Now let's assume you've freed 2 slices on your 4-slice radio such as a 6500 or 6600.
+	When your friend gets on your radio, your friend will see "Sm--", and you'll see "Sm--", where the dashes indicate that another user has those slices.
+	We refer to an instance of an operator connected to a radio as a station, so we'll say you are KE5AL, and your friend is WA0LKM.
+	Here are some things to note:
+	</p>
+	<ul>
+	<li>You may only share with one other user.</li>
+	<li>
+	Each station will see, on the left, a character for each slice on the radio, "s", "m", ".", or "-".
+	If a dash, "-", is shown for a slice, that slice has been allocated to another station.
+	If a period, ".", is shown, the slice is free, and can be allocated to the station by entering a period, ".".
+	Note that in order to share the radio, at least one slice must be free.
+	</li>
+	<li>
+	The first station to connect on the local LAN has the local PTT, (i.e.) can use the mic and key.
+	Others must key with the software.
+	</li>
+	<li>Using JJFlexRadio, the station's name is either the operator's callsign, or the hostname of the computer in use if no callsign was specified.
+	The station's name now appears in the program title.</li>
+	<li>When a station transmits, each station sees a backslash, "\", instead of the letter corresponding to their transmit slice.
+	Thus it is easy to tell when another station is transmitting.
+	You'll likely want to have an agreement with your users as to who can transmit.</li>
+	</ul>
+	<h2><a id="profileMgmt">Profiles and Profile Management</a></h2>
+	<p>Profiles are used to save and restore a radio's configuration.
+	There is a thorough discussion of profiles in section 18 of the SmartSDR Users Guide for version 3.
+	There are currently 4 types of profiles, display, global, mic, and tx, however only the last 3 are currently used, (i.e.) not the display profiles.
+	</p>
+	<p>
+	From the documentation:
+	<br />There are three types of profiles: GLOBAL, TRANSMIT and MIC. Global profiles store the state of
+	the radio including the Panadapters and Slices that are open, the mode associated with each slice
+	and all the settings for noise blankers, AGC, filters, etc. This can be thought of as a snapshot in
+	time. Transmit profiles save the transmitter power level, tune power level, transverter power level
+	and the various transmitter delay parameters. MIC profiles save a configuration for a specific
+	microphone or audio source, including the TX filter settings, the MIC selection and level and the
+	DEXP, PROC, DAX, VOX and EQ settings. Both Transmit and MIC profiles are automatically saved
+	when the related controls are changed.
+	</p>
+	<p>
+	Use the "Manage Profiles" Actions menu item to add a new profile, update an existing profile, delete a profile, select a profile and to save a global profile.
+	You can also designate one profile of each type, global, mic and tx, to be a default profile, selected automatically when a radio is selected.
+	The profiles are stored on a per-user basis, so if you want different sets of profiles, you'll need to have each one under a separate user.'
+	</p>
+	<p>
+		The profiles are shown in a list as follows:
+		<ul>
+			<li>
+				First is the profile's name.
+				<br />This is immediately followed by two characters, plus or minus signs, "+" or "-".
+				The first is plus if the profile is in the list for the current operator, minus otherwise.
+				The second one is plus if the profile is defined on the radio, minus otherwise.
+				For example, one of the mic profiles I'm not using might show up as "unusedMicProfile-+".
+				If I've defined a new profile called "newProfile", but haven't saved or selected it yet, the name shows up as "newProfile+-".
+				This can also happen if you've gotten on a radio you haven't been on, or just restored your radio to factory settings.
+				Thus after adding a new profile to the radio, you should export the radio's profiles using the "Export" button.
+				Note that this is different from the "Export Setup" Actions menu item, which is used to export the JJFlexRadio setup.
+			</li>
+	<li>
+		The next word indicates the profile's type, "global", "tx" or "mic".
+	</li>
+	<li>
+		If this is the default for this type, you'll then see "(default)".
+	</li>
+	<li>
+		If the profile is currently in use, you'll then see "(current)".
+	</li>
+		</ul>
+	</p>
+	<p>
+		After the list of profiles are some buttons.
+		<dl>
+	<dt>Add</dt>
+	<dd>Used to create a new profile.</dd>
+	<dt>Update</dt>
+	<dd>Used to update a profile's name or default status.</dd>
+	<dt>Delete</dt>
+	<dd>Used to delete a profile.</dd>
+	<dt>Select</dt>
+	<dd>Used to select, or activate, a profile.
+	This is the default button, (i.e.) if you hit Enter on a selected profile name, this is the same as clicking the Select button.
+	When a profile is selected, activated, you're taken out of the dialogue.
+	</dd>
+	<dt>Save</dt>
+			<dd>This saves a global profile.
+			This button only appears if the selected profile is of type global.
+	You "save" a global profile when the radio is setup for that configuration.
+	Other profiles are changed automatically when an applicable change is made.
+	For example, the currently active tx, transmit, profile is updated when the transmitter power level is changed.
+			</dd>
+		</dl>
+	</p>
+	<p>
+	JJFlexRadio creates a global profile for you automatically, named JJRadioDefault.
+	Let's say, for example, you have a rig with two slices.
+	When JJFlexRadio comes up you want one slice to be on 40 meter LSB, and the other one on 20 meter USB.
+	Setup your radio to the desired configuration which also includes such items as AGC and AGC Level, and then use the "Manage Profiles" item and save the selected global profile.
+	</p>
+	<p>
+	You can also add your own profiles to setup your rig as you want.
+	Given the situation described in the previous paragraph,
+	you might want another global profile for 40 and 20 meter CW.
+	Create a new profile, perhaps named 40m20mCW.
+	Setup your rig with a slice on 40 CW and the other on 20 CW.
+	Make sure items such as AGC are set as you desire.
+	Now go to the Manage Profiles screen and select the 40m20mCW profile, and click the "Save" button.
+	Now you can "Select" this profile to work 40 or 20 CW.
+	</p>
+	<p>
+	For example, I have a global profile called "AM broadcast".
+	This profile sets the mode to AM, and my slices to A.M. frequencies of interest.
+	Thus, when I select this profile, my rig goes to the a.m. band.
+	I also have an amplifier, and when I use it I don't want the rig to use the full 100 watts.
+	Running barefoot, I use the rig's Default tx profile, which is simply named "Default."
+	I've also created a tx profile which I named "Amp."
+	The Amp profile sets my output to different values on each band to keep the amp under control.
+	</p>
+	<p>
+	Note that TX and Mic profiles are changed when you change an associated item; you don't use the "Save" button with these profiles.
+	Thus to change a TX or Mic profile, first select the profile, then set the rig's value of interest.
+	</p>
+	<h2><a id="sendingCW">Sending CW</a></h2>
+	<p>
+		If you just type characters into the Sent Text field, and cw breakin, the VOX, is on, the text will be sent.
+ 	Note that the text is sent only after you enter a space, or a predefined <a href="#CWMacros">CW message.</a>
+	</p>
+	<p>From within the Sent Text field you may:</p>
+	<dl>
+		<dt>copy and paste text</dt>
+		<dd>You do this by selecting the text, and using ctrl-C to copy it to the clipboard, and ctrl-V to paste it.</dd>
+	<dt>Text buffering</dt>
+		<dd>If you press ctrl--B, text is buffered rather than sent, until you enter another ctrl-B.
+	This allows you to build up a buffer of text before sending it.</dd>
+	<dt>Immediately stop sending</dt>
+		<dd>The F12 key aborts CW sending or clears the buffer.
+	Any unsent code is discarded.</dd>
+		</dl>
+	<h2><a id="Logging">Logging</a></h2>
+	<p>
+	JJFlexRadio allows you to do your logging with the same program you use to monitor your rig.
+	It is good to become familiar with the keystrokes used to log information, and the behavior of the log window in general, before attempting to use it.
+	Once you're familiar with the logging, you can just turn off the speech from your screen reader and use the braille display.
+	</p>
+	<p>
+	JJFlexRadio's logging can be modified to fit a particular logging situation.
+	For example, there is a different log form for Field Day logging than for general purpose logging.
+	These log formats are predefined.
+	</p>
+	<h3><a id="LogCharacteristics">The Log Characteristics Dialogue</a></h3>
+	<p>
+	This dialogue is used to specify the log file and its properties.
+	The first thing is the log file name.  You can specify a log pathname, use the Browse button that follows the name,
+	or choose from the four most recently used log files using the Files menu, Alt-F.
+	The default file extention for the log file is .jrl.
+	While the log file format is unique to JJFlexRadio, the log can be exported to, and imported from, an .adif file.
+	</p>
+	<p>
+	Next you specify the form name.
+	This is the name of a predefined log format.
+	The log format we'll discuss here is the DefaultLog.
+	</p>
+	<p>
+	The reason for different log forms is to tailor the logging to the activity being logged.
+	For example, you don't need to log signal reports, QTH, and name for field day, rather you log the call, class, and ARRL section.
+	Other log forms will be added in the future.
+	</p>
+	<p>
+	You can then select one of four types of duplicate checking.
+	The types are none, justCall, callAndBand, or callAndBandAndMode.
+	If you specify something other than none, the information in the current log entry is checked for a previous duplicate entry containing the fields mentioned.
+	If, for example, the duplicate method is justCall, and you enter the call of a station you've worked previously, a beep sounds when you leave the call field.
+	The #QSOs field in the log entry shows the number of prior contacts you've made with that station.
+	This is not only useful for contesting, but also lets you know when you've contacted a station you've worked before.
+	</p>
+	<p>Next is a field where you can specify the first serial number in the log.  The default is 1.</p>
+	<p>
+	Following the first serial field is a field that allows you to specify whether or not to lookup operator information from hamqth.com; the default is "No".
+	The operator's information is placed into the pertinent fields in the log when you exit the Call field.
+	For example, if you enter "ke5al" while creating a new log entry, when you exit the Call field, the QTH, Handle, and country fields are primed with KE5AL's QTH, Handle and country information.
+	</p>
+	<h3><a id="LogWindow">Some general Information About the Log Window</a></h3>
+	<p>
+	The log window can be brought up with key sequences, and brought down immediately with either the Enter or Escape key.
+	If you exit the window with the escape key, any new information you entered is discarded.
+	If you use the Enter key, the new information is remembered, but not logged yet.
+	The exception to this is the Comments field, where the Enter key adds a new line.
+	It is important to note that an entry isn't logged until you use the "Write Log Entry" key, set by default to ctrl-W.
+	</p>
+	<p>
+	For example, if you've just come to the log form to enter the QTH, and you know it's wrong and want to start over, you can hit Escape, and come back to it when the station is repeating it.
+	However, if you've entered other information and use Escape, that will need to be re-entered too, so be careful here.
+	Remember, unless in the Comments field, pressing enter leaves the form, remembers the information, but doesn't log it.
+	If you're in the Comments field, hit Tab to leave the field and then press Enter.
+	</p>
+	<p>
+	Field formats aren't checked, so you can enter anything into any field, except for Tab and Enter.
+	Enter behaves as described, and Tab takes you to the next field.
+	You can also enter the key sequences to go to other log fields, or perform some log actions.
+	For example, you can jump from the Callsign field to the Comment field if you wish.
+	</p>
+	<h3><a id="LogJump">Going to Log Fields</a></h3>
+	<p>
+	You use a key sequence to go to a log field or perform selected log actions.
+	If you're at the main window, the log window is brought up and you're positioned in the desired field.
+	If you're already in the log window, you simply jump to the desired field.
+	</p>
+	You can also perform selected logging actions such as to write the current entry.
+	<p>Let's go through a typical QSO, showing the default keys used to log information.  You can change these key sequences if you wish.</p>
+	<ul>
+	<li>
+	When you contact a station you'll want to start a new log entry, probably with ctrl-N, new log entry, or alt-C, log the call.
+	This will position you in the Callsign field.
+	Ctrl-N also logs the date and time, operating mode, and the TX and RX frequencies.
+	Alt-C will log those items once the call has been entered.
+	You'll likely want to enter the call at this point, so let's assume you do.
+	</li>
+	<li>
+	Now let's say you're going to enter your info such as signal report, QTH and name.
+	As part of this, you might want to log the Op's signal report in the HisRST field which immediately follows the Callsign field.  You can get to this field with the tab key if you're still in the log form, or no matter whether you are or not, by using ctrl-H.
+	After you've done that, you'll want to log the other guy's info as he transmits it.
+	</li>
+	<li>
+	You're still in the log form, although you might have left it using the Enter key after entering the call.
+	In either case, you now want to log your signal report with alt-M.
+	If you're still in the form, the field after HisRST is MyRST, so tab would work too.
+	</li>
+	<li>And so it goes.  The next field is QTH, alt-Q; followed by State/Province, alt-S; followed by Handle, alt-N (N for name).</li>
+	<li>
+	The following fields are Rig, alt-R; Antenna, ctrl-A; and Comments, alt-E.
+	Note that alt-C is for the Callsign.
+	Also, alt-O takes you to the mode.
+	</li>
+	<li>
+	The alt-D sequence is used for date/time, and behaves a bit differently from the other key sequences.
+	If you're at the main window and use alt-D, the date/time in the log is set to the current values.  Note that that the date and time are in UTC.
+	If you're in the log form, alt-D just takes you to the date field so you can change it or the time which immediately follows the date.
+	</li>
+	<li>
+	That's it for the fields with key sequences.
+	There are some informational fields that follow the Comments field.
+	The first of these are the country, ITU and CQ zones, and the time offset from GMT of that country's capital.
+	Note that a country may have multiple zones.
+	</li>
+	<li>
+	Following the country information is the serial number of the contact.
+	This is generally the number of the record in your log.
+	</li>
+	<li>Following the serial number is the name of the band the QSO was on.</li>
+	<li>
+	If you have selected a form of duplicate checking for the log, the #QSOs field shows the number of times you've worked the station.
+	Duplicate checking is discussed in <a href="#LogCharacteristics">the section on log characteristics.</a>
+	</li>
+	<li>
+	You can write the current log entry and start a fresh entry with the log write sequence, ctrl-W.
+	You'll be positioned at the call.
+	The date/time and frequencies are added to the log when you exit the callsign field.
+	Thus you can stay in the log form and log contact after contact, and the correct date, time, etc, is filled in for you once you've entered a callsign.
+	</li>
+	<li>
+	If you're using dup checking, and you exit the callsign field and hear the beep indicating a dup,
+	you can use the log search sequence, ctrl-shift-F, to search for the duplicate entries.
+	Note that the search is just for the callsign, regardless of what type of dup checking you're using.
+	I use "JustCall" dup checking for my everyday station log.  Thus I get a dup each time I log a station I've worked before.
+	The search feature allows me to instantly search for the other QSOs right from the log.
+	The search results are shown in a separate window, and the original log entry is uneffected.
+	The log search window is discussed below.
+	You can exit the search window with escape.
+	</li>
+	</ul>
+	<h3><a id="LogSearch">Searching the Log</a></h3>
+	<p>
+	You can search for information in the log with ctrl-shift-F by default.
+	If you were at the main window, you are placed in a blank log form, and you need to enter the information in the appropriate field.
+	For example, if you want to look up a callsign, put it in the callsign field, which you can jump to with alt-C by default.
+	The results are displayed in a list form, and you can select the desired item.
+	You are then placed in the log form for that QSO.
+	</p>
+	<p>
+	If you are logging a station that you've worked before, and focused on the log form, ctrl-shift-F will search for that call.
+	You will be placed in the list of previous logged QSOs.
+	Note however the search from within the log form only searches if the entry has been identified as a dup.
+	Thus if you're not dup checking, it won't function.
+	</p>
+	<h3><a id="logStats">Log Statistics</a></h3>
+	<p>
+	If you've downloaded an LOTW report from the ARRL's LOTW website, and merged it with your log, see <a href="#LOTWMerge">the LOTW Merge Action menu item,</a>
+	you can view some log statistics with this feature, ctrl-shift-T by default.
+	The currently supported stats are U.S. oriented.
+	When you enter ctrl-shift-T, you're taken to a locally generated web page which shows the stats.
+	</p>
+	<h2><a id="Menu">The JJFlexRadio Menus</a></h2>
+	<p>
+	Currently there are four menus as described below.
+	</p>
+	<h3><a id="Actions">The Actions menu</a></h3>
+	<p>The Actions menu currently consists of the following items:</p>
+	<ul>
+	<li>List Operators</li>
+	<p>
+	You have the capability of having multiple operators.
+	JJFlexRadio uses the default operator when first brought up.
+	You can use this dialogue to change the current operator.
+	</p>
+	<p>You may also use this dialogue to add another operator by clicking the "New" button.</p>
+	<p>
+	You may update an operator's information by selecting that operator and clicking the "Update" button.
+	Similarly you may delete an operator.
+	</p>
+	<p>When done, click "Finished or hit escape.</p>
+	<li>Select rig</li>
+	<p>
+	This allows you to show and perhaps change the current rig.
+	See the section on the <a href="#rigSelector">Rig Selector.</a>
+	</p>
+	<li>Profile Management</li>
+	<p>
+	See the section entitled <a href="#profileMgmt">Profiles and Profile Management.</a>
+	</p>
+	<li>Local PTT on</li>
+	<p>
+	This is used to indicate that this instance of the program should have the local PTT, (i.e.) the key and mic button.
+	You might use this if you're the second user on the local LAN, but are actually at the rig.
+	</p>
+	<li>Connected Stations</li>
+	<p>This shows the connected stations.</p>
+	<li>Flex Knob Config</li>
+	<p>
+	Used to configure the FlexControl Knob, see
+	<a href="#flexControl">The FlexControl knob.</a>
+	</p>
+	<li>W2 Wattmeter</li>
+	<p>see <a href="#wattmeter">External Wattmeter Support.</a></p>
+	<li>Logging</li>
+	<p>Contains the logging functions formerly on the Actions menu.</p>
+	<ul>
+	<li>Logfile Characteristics</li>
+	<p>This is used to specify information about the logfile, see <a href="#LogCharacteristics">the section on log characteristics.</a></p>
+	<li>Import Log</li>
+	<p>
+	This will import an ADIF file into the current log.
+	It is important to note that the log is replaced by the entries in the ADIF file.
+	Thus this would normally be used on an empty log.
+	</p>
+	<li>Export Log</li>
+	<p>This exports the current log to an ADIF file.</p>
+	<li><a id="LOTWMerge">LOTW Merge</a></li>
+	<p>
+	This allows you to merge a report into your log that you've downloaded from the ARRL Logbook of the World website.
+	The downloaded report is in ADIF format.
+	Once you've downloaded the report, you select the "LOTW Merge" item to merge it with your current log, by providing the name of the file you just downloaded.
+	See the section on <a href="#logStats">Log Statistics.</a>
+	</p>
+	</ul>
+	<li>Export Setup</li>
+	<p>This is used to export this JJFlexRadio setup to a file so it may be used to migrate the program to another computer,
+	see <a href="#moving">Moving to another computer.</a></p>
+	<li>Show Bands and Frequencies</li>
+	<p>
+	This is a useful way to show what frequencies you may operate on.
+	Currently, there is only information for U.S. amateur bands and license classes.
+	This dialogue consists of 3 list boxes, a display area, and a couple of buttons.
+	When it comes up, you are in the first of 3 list boxes, the band box.  If your radio is on and tuned to a ham band, that band is selected.
+	The second box is used to select the license class.  Initially the license class you specified for the current operator is used.
+	The third box selects the mode.  This will be set to CW or phone, depending upon the mode setting of your radio.
+	You may alter these selections if you choose.
+	</p>
+	<p>
+	When you press the Show button, or just hit enter, you are taken to the display area which shows the results.
+	The first line will show the entire band, (e.g.) "20m 14000 14350".
+	If I'm on 20 meter CW, the second line will show,
+	</p>
+	<pre>
+	extra - 14000 14150 - CW RTTY/Data
+	</pre>
+	<p>If I now select "none" for the license, I am shown all the 20 meter band restrictions for the different license classes.</p>
+	<li><a id="CWMacros">Manage CW Messages</a></li>
+	<p>
+	This item allows you to add, update, or delete any CW messages you have created.
+	If you select this item you'll see a list of your CW messages.
+	You can add a new message, update the selected one, delete the selected one, or exit with the escape key.
+	</p>
+	<p>
+	Note:
+	The VOX, or CW breakin, must be on in order to send a CW message.
+	If you just want to test a message, you'll need to set the transmit power to 0.
+	</p>
+	<p>
+	CW messages are on a per operator basis.
+	Each operator has a unique set of CW messages.
+	</p>
+	<p>
+	A CW message consists of a label, a key assignment, and the text to send.
+	</p>
+	<p>
+	The text to send may contain substitution items consisting of an ampersand (&) followed by a single character.
+	The character is case sensative.
+	For example, &C (uppercase c) will add your call sign to the message.
+	Thus if the text is "de &C", and your call is KE5AL, the assigned key will send "de KE5AL".
+	</p>
+	<p>
+		Also, the text of a CW message will have a space added at the end if there isn't already one.
+		Therefore, a CW message can't be used as part of a word.
+	</p>
+	<p>The current substitutions are:</p>
+	<ul>
+	<li>C - my call</li>
+	<li>c - other station's call</li>
+	<li>N - my name</li>
+	<li>n - other station's name</li>
+	<li>Q - my QTH</li>
+	<li>q - other station's QTH</li>
+	<li>R - my RST</li>
+	<li>r - other station's RST</li>
+	<li>S - Sent serial number, the STX ADIF value</li>
+	<li>s - received serial number, the SRX ADIF value</li>
+	</ul>
+	<li><a id="KeyMapping">Change Key Mapping</a></li>
+	<p>
+	Change key mapping brings up a dialogue allowing you to change the key mappings.
+	When the dialogue comes up, you are in a list of items, each of which has a check box.
+	With an item selected, you may press Tab to get to a field where you can press the new key sequence for the associated function.
+	If you have now duplicated another definition, both items are checked.
+	</p>
+	<p>
+	Thus the check boxes let you know where the duplicate key definitions are so you can correct one or both.
+	For example, if I change the key for Call from alt-C to alt-L, I am brought back to the list and now the current item is checked, along with the "alt-L Bring up Log Form" item.
+	I should either change one of these, or hit escape to cancel my changes.
+	</p>
+	<p>If you want to inactivate a key definition, (i.e.) assign it to no key, use the Delete key for the new key sequence.</p>
+	<p>
+	Note that when assigning key sequences, you should avoid the Alt key sequences that conflict with menu access keys.
+	These are currently Alt-A, Actions menu; Alt-F, Screen Fields menu; and Alt-H, Help menu.
+	</p>
+	<li>Restore Default Key Mapping</li>
+	<p>As the name implies, this restores the original key mapping.</p>
+	<li>Show all messages</li>
+	<p>
+	Some messages allow you to elect not to see that message again.
+	If you want to reset this behavior, (i.e.) see the messages, use this item.
+	Note that it is not possible to selectively enable such messages.
+	</p>
+	<li>Toggle Screen Saver</li>
+	<p>
+	I found that while operating I would get in a QSO and not touch the computer for a period of time.
+	It was annoying to have my screen saver come up in the middle of a QSO, because my screen saver starts up work items using the Worldwide Grid.
+	When JJFlexRadio is started, if your screen saver is active, it is disabled.
+	It is re-enabled on exit.
+	You can use this item to enable it while the program is running.
+	</p>
+	<li>Exit</li>
+	<p>
+	This exits JJFlexRadio.  Alt-F4 also works.
+	If you have an incomplete log entry, you are asked if you want to write it.
+	Remember, log entries are only written when you use the key sequence for that, ctrl-W by default.
+	</p>
+	</ul>
+	<h3><a id="ScreenFields">The Screen Fields Menu</a></h3>
+	<p>
+	Most of the fields on the main screen are rig dependent fields.
+	This menu allows you to easily navigate to those fields without having to hit the tab key several times to get where you want to go.
+	For example, if in CW mode, and you want to change the keyer speed,
+	hit Alt-F to go to the Screen Fields menu, then hit "s", and you'll go to the speed field.
+	Note that like other menus, if more than one field has the same access key, you're positioned in the menu at the first such field.
+	</p>
+	<p>The fields shown are mode dependent, so, for example, if the mode is USB the keyer speed won't show up.</p>
+	<h3><a id="operations">The Operations Menu</a></h3>
+	<p>
+	This menu simply allows you to access program operations, normally accessed with a key sequence, from a menu.
+	It's chief advantage is that, if you forget a key sequence, you can use the function without having to look it up.
+	For example, if you forget that Ctrl-F is used for direct frequency entry, you can use the Operations menu to find the "Frequency" item.
+	</p>
+	<p>
+	This menu is also useful for commands which have no associated key sequence.
+	The Operations menu is the only way to access these.
+	Some items to note are:
+	</p>
+	<dl>
+	<dt>Collect debug info</dt>
+	<dd>
+	You hopefully won't ever need to use this item.
+	If you have a problem with this program, this is used to collect debug information to send to JJFlexRadio support, yours truely at present.
+	Note that before sending in debug information, you should have first contacted support.
+	</dd>
+	<dt>PC Audio on/off</dt>
+	<dd>
+	This is generally used if you want to operate your rig over your LAN, but are not at the rig.
+	This item was, in the past, called "remote audio" or "LAN audio", and was only for use if connecting locally.
+	You may now turn off or on pc audio, even if connected over the network.
+	If, however, you're connecting over the network, pc audio is on by deffault.
+	Note that you may need to <a href="#selectAudio">select your audio devices</a> the first time you run JJFlexRadio.
+	Also note that JJFlexRadio doesn't use the DAX control panel, nor any of the DAX audio devices installed by SmartSDR.
+	</dd>
+	<dt>Reboot the radio</dt>
+	<dd>
+	This is used to reboot the radio.
+	If the rig is on your LAN, it first tries to shutdown the radio normally before the reboot.
+	</dd>
+	<dt><a id="selectAudio">Select Audio Device</a></dt>
+	<dd>
+	You are first asked to select the input, microphone, device.
+	Note that this can be a built-in microphone if you like.
+	You are then asked for the output, speakers, device.
+	These devices will be used for pc audio.
+	</dd>
+		<dt><a id="transmitControls">Transmit Controls</a></dt>
+		<dd>
+			This allows you to control the state of the transmit-related jacks on the rear panel.
+			If, for example, you're going to key an amplifier with the TX1 RCA plug on the rear panel, you need to set "TX1 RCA" to True.
+	Note that TX1 is enabled by default, as it formerly was.
+		</dd>
+	<dt>Tuner Memories</dt>
+	<dd>
+	This is a dialogue that allows you to turn ATU memories on or off, and to clear the tuner memories.
+	</dd>
+	</dl>
+	<h3><a id="Help">The Help menu</a></h3>
+	<p>
+	This menu has these items:
+	<ul>
+	<li>Help Page</li>
+	<p>This brings up this help page.</p>
+	<li>Key Assignments</li>
+	<p>This brings up the list of key assignments.  This list may also be shown with the F1 key.</p>
+	<li>Key Assignments sorted alphabetically</li>
+	<li>Key Assignments by function</li>
+	<li>Tracing</li>
+	<p>
+	This dialogue allows you to start an execution trace.
+	You should only do this if directed to for the purpose of providing debug information to fix a problem.
+	It allows you to specify a file to receive the trace and to set the trace detail level.
+	</p>
+	<li>About</li>
+	<p>This shows information about JJFlexRadio.</p>
+	</ul>
+	<h2><a id="Scanning">The Scanning Feature</a></h2>
+	<p>
+	JJFlexRadio provides two types of scanning, linear and memory.
+	Linear scanning is used to scan a linear region of memory, while the memory scanning allows you to scan through your radio's memories.
+	</p>
+	<h3><a id="lscan">Linear Scanning</a></h3>
+	<p>
+	JJFlexRadio provides a primative scanning feature that allows you to scan between a start and end frequency.
+	By default, it is access with ctrl-S.
+	You can specify the scan step size, in KHZ, and the scan speed.
+	The speed is the number of tenths of a second to spend on each frequency.
+	Thus to scan from 7.2 to 7.299 in steps of 1 KHZ, spending half a second on each frequency, you'd specify 7.2, 7.299, 1, and 5 (5 tenths of a second).
+	</p>
+	<p>
+	While scanning, if you hear something you want to investigate, pressing the "Pause scan" key will pause the scan, you may then investigate with the VFO, and then resume the scan where you left off, using the resume scan key.
+	By default, the pause key is F2, and the resume key is Shift-F2.
+	Stop the scan with ctrl-Z by default.
+	</p>
+	<p>The status line shows the state of the scan, off, running, or paused.</p>
+	<p>
+	You can also save your scan for later use.
+	This is done from the dialogue where you entered the scan parameters.
+	When saving a scan, you are asked to name the scan for future reference.
+	There is a function to list and select the saved scans, ctrl-shift-U by default.
+	</p>
+	<h3><a id="mscan">Memory Scan</a></h3>
+	<p>
+	The memory scanning feature makes use of memory groups.
+	There are two types of memory groups, those defined by the memories themselves, and memory groups you define yourself.
+	</p>
+	<p>
+	You may define your own memory groups which can include memories you choose, regardless of which group they're in according to your radio.
+	For example, you might have setup group1 to be 10 meter repeaters, and group2 to be 6 meter repeters.
+	You could define a group called Repeaters that includes all those repeaters.
+	Of course, when doing a scan, you could simply select both group1 and group2 also.
+	</p>
+	<p>
+	By default the key sequence to perform a memory scan is Ctrl-Shift-M.
+	You are then given a list of the memory groups.
+	When you select a memory group, the memories belonging to that group are displayed in the list to the right of the group list.
+	However, in order to include a memory group in a scan, you must check the corresponding check box.
+	</p>
+	<p>
+	To start a scan, you then tab to the speed field and provide the scan speed in tenths of a second, (e.g.) 10 will spend 1 second on each memory.
+	You then press the start scan button.
+	</p>
+	<p>
+	Following the start scan button is a button labeled "Manage Groups".
+	This brings up a dialogue you can use to update or create a group you've defined.
+	You can not change the memory groups defined by your radio here.
+	Those must be changed using the memory dialogue.
+	</p>
+	<h2><a id="Panning">The Pan Adapter</a></h2>
+	<p>
+	As far as I know, JJRadio and JJFlexRadio are the only programs to support a braille pan adapter.
+	The Flex radios provide third party software access to the panadapter information straight from the radio.
+	You can jump to the display with the Band Pan Actions menu item or the key sequence, ctrl-P by default.
+	The display shows the relative signal strengths for the corresponding frequencies.
+	It is intended for use with a braille display.
+	The signal strengths are shown using the braille characters 'a' through 'Z' in lower and upper case,
+	where lowercase 'a' is the noise floor, and uppercase 'Z' is a strong signal.
+	The routing keys will take you to the corresponding frequency.
+	</p>
+	<p>Below the pan display are the following fields:</p>
+	<dl>
+	<dt>Pan Low</dt>
+	<dd>This shows the low frequency which corresponds to the left-most cell of the display.</dd>
+	<dt>Pan High</dt>
+	<dd>
+	This shows the end frequency for the pan.
+	Note that it is the upper pan limit, not the frequency corresponding to the right-most cell.
+	</dd>
+	<dt>Change</dt>
+	<dd>Press (click) this button if you change Pan Low or Pan High.</dd>
+	<dt>Save</dt>
+	<dd>
+	Press Save to save a custom panning range.
+	Note that you must have previously pressed the Change button to establish the custom range.
+	</dd>
+	<dt>Erase</dt>
+	<dd>Use Erase to erase a custom range.</dd>
+	</dl>
+	<p>Here is some sample pan output:</p>
+	<pre>
+	aababbbcaAGaaabadabbbRPaabbbcdbbpmaaagaa
+	Pan Low:   14.000.000    Pan High:   14.040.000    Change   Save   Erase
+	</pre>
+	<p>
+	Note that this is a 40 cell display, so each cell corresponds to 1 KHZ.
+	Thus the display shows the strongest signals around 14010 and 14022.
+	Note that the "a" character indicates the noise floor.
+	</p>
+	<p>
+	When you start JJFlexRadio for the first time, the pan range is selected for the band you're using.
+	For example, the initial low and high values for 20 meters will be 14.000 and 14.350.
+	</p>
+	<p>
+	Let's say you want to create two ranges on 20 meters, 14.000 to 14.080 and 14.150 to 14.350.
+	To create the first range, leave Pan Low at 14.000, and set Pan High to 14.080.
+	Then press Change.
+	Note that at this point the pan display will pan over the new range.
+	Press the Save button to save the range.
+	For the second region, set Pan Low to 14.150 and Pan High to 14.350.
+	Then press Change and Save.
+	Now if your frequency is in one of these ranges, the pan display will show the corresponding region.
+	Note that if you move out of the ranges, let's say to 14.110, panning will be from 14.000 to 14.350.
+	</p>
+	<p>
+	Your custom ranges are saved for the current operator.
+	Thus different operators can create their own ranges.
+	</p>
+	<h2><a id="RemoteFlex">Using the Flex Radio Remotely</a></h2>
+	<p>
+	It is possible to use the Flex radios running Version 2 of the SmartSDR software remotely, over the WAN, (i.e.) over the internet.
+	This is discussed earlier in the section entitled <a href="#rigSelector">the Rig Selector.</a>
+	</p>
+	<p>
+	Note however, that if you log into a radio over the internet, PC audio is on by default.
+	This is because you will almost certainly not be sitting in front of the rig, and need to use PC audio instead of plugged in speakers.
+	</p>
+	<h2><a id="cluster">DX Cluster</a></h2>
+	<p>
+	This allows you to use DX clusters which have a telnet interface.
+	By default, the key assigned is Ctrl-Alt-D, or use the "DX cluster" item from the Operations menu.
+	</p>
+	<p>
+	Before using this function for the first time, you may want to see if the current operator has defined a cluster address and login name.
+	This is done by selecting "List Operators" from the Actions menu, and updating the currently checked user.
+	The Cluster address defaults to dxc.nc7j.net.
+	The cluster address may contain a port number, delimited with a colon, in which case you specify it as address:port.
+	For example, dxc.nc7j.net is the same as dxc.nc7j.net:23; 23 is the default telnet port.
+	The login name will default to the callsign of the operator when the operator is created or updated.
+	You will almost always login using your callsign.
+	For one list of telnet available clusters, see
+	<a href="http://www.ng3k.com/misc/cluster.html">Telnet Access to DX Packet Clusters.</a>
+	There are other lists as well.
+	</p>
+	<p>
+	When you use this function you will be asked to enter the cluster address and the login name.
+	This will be the cluster address and login name, callsign, for the current operator if set.
+	When in this dialogue, you can tab past the OK and Cancel buttons, and check the box to not see this again, and then click the OK button.
+	If you do this, when you subsequently bring up the cluster, you won't be prompted for the login name.
+	Thus if you wish to use multiple clusters, you may not want to check this box.
+	JJFlexRadio allows you to have multiple cluster windows open, so checking the box will mean you'll always open a window on the same cluster.
+	</p>
+	<p>
+	If the login was successful, a separate window will come up showing text from when we connected to the present; basically the login banner stuff.
+	Then the DX spots appear.
+	If you haven't set a filter, you'll be inundated with spots, primarily from skimmers.
+	The NC7J cluster, an AR-Cluster, has good documentation starting at <a href="http://www.nc7j.com/arcluster/arusermanual-6/">the AR-Cluster Introduction page.</a>
+	The DXSpider cluster documentation is at <a href="http://wiki.dxcluster.org/index.php/Main_Page">the DXSpider Documentation Wiki.</a>
+	</p>
+	<p>
+	If you press tab once you'll land in the "Cluster cmd" field.
+	In this field you can enter a command to the cluster.
+	For the NC7J cluster, and other AR-Clusters, you might immediately want to enter the command "set dx filter not skimmer", without the quotes of course.
+	This will turn off the skimmer spots.
+	I encourage you to read up on the clustr commands.
+	They allow you to filter the cluster output, set your login information, such as your name, lat/long, grid square, etc, and other functions.
+	</p>
+	<p>
+	At the bottom of the screen are two buttons.
+	The first is the "Beep on/off" button.
+	The text for the button shows the action to be performed.
+	Since the button is initially off, the button is labeled "Beep on".
+	Turning beeps on causes a beep every time output is sent to the screen.
+	The next push is for Beep on DX.  This, my preferred setting, causes a beep only when a new spot is reported.
+	Also, the setting you choose, on, off, or beep on dx, is remembered so you don't need to set it every time you use the cluster.
+	</p>
+	<p>
+	Next is a button initially labeled "Track last post Off"; it will be Off or On.
+	If you press it, turning tracking on, the cursor is routed to the last displayed screen item, instead of staying in one spot.
+	This is quite useful if you don't have a lot of spots coming in, and always want to read the most recent post.
+	This setting is also remembered.
+	</p>
+	<p>
+	You may simply close the cluster window to log off the cluster.
+	Of course you are logged off if you close JJFlexRadio also.
+	</p>
+	<p>
+	The reason I developed this interface as opposed to simply using a telnet client, is that I can
+	either maintain your current cursor position in the output while new information is being added at the bottom of the window,
+	or always set the cursor to the last item added.
+	If maintaining position, even if the window would normally scroll, your cursor position is preserved.
+	This gives you a chance to read the output with speech or braille, before moving on.
+	To navigate to the bottom of the output, (i.e.) to the most recent entry, use Ctrl-End.
+	Ctrl-Home takes you to the top of the window.
+	As usual, you move up and down a line at a time with the up and down arrows.
+	</p>
+	<p>
+	The format of a displayed spot is usually frequency, callsign, comments, timestamp, and reporting callsign.
+	For example,
+	<br />14020.1 EA1AA good sig 2149Z KE5AL
+	</p>
+	<p>
+	This says that the station, EA1AA, is on 14020.1 khz, reported by KE5AL at 2149Z.
+	KE5AL says he has a good signal.
+	</p>
+	<p>
+	With your cursor on that line, if you press enter, your radio, if being controled by JJFlexRadio, will go to that frequency, 14020.1.
+	Also, the call, EA1AA, will be in the windows clipboard, so it can be copied into the log.
+	</p>
+	<h2><a id="wattmeter">External Wattmeter Support</a></h2>
+	<p>
+	It may be desirable to use an external wattmeter to read the power or SWR.
+	This is especially true if using an amplifier.
+	At present, JJFlexRadio only supports the Elecraft W2 wattmeter.
+	The W2 allows the meter to be read over a virtual com port.
+	This document assumes the W2 is already setup.
+	</p>
+	<p>The power or SWR is shown in the s-meter field when in transmit.</p>
+	<p>
+	To start using the W2, select the W2 Wattmeter item from the Actions Menu.
+	The appropriate com port must then be selected.
+	</p>
+	<p>
+	The next item is either "useifopen" or "dontuse".
+	If "dontuse" is selected, the power is gotten from the rig.
+	</p>
+	<p>
+	The final item is "average", "pep", or "swr",depending upon the reading you want.
+	</p>
+	<p>
+	The power or SWR will show up instead of the s-meter reading when you transmit, whether it comes from the wattmeter or the rig,
+	however the SWR only shows up in this field if it comes from the wattmeter.
+	</p>
+	<p>Important!  The Elecraft W2 software must not be running.</p>
+	<h2><a id="flexControl">The FlexControl knob</a></h2>
+	<p>
+	Flex Radio Systems sells an external control knob known as the FlexControl knob.
+	The knob contains a tuning knob, and 3 push buttons, left, center and right.
+	The tuning knob and each button may be pressed once, twice quickly, or held for over a second, for a total of three functions which may be assigned to each one.
+	In addition, the tuning knob can be rotated like a VFO knob.
+	</p>
+	<p>
+	To configure the device, select the "Flex Knob Config" item from the Actions menu.
+	You must select the com port for the device.
+	This can be found using the Windows Device Manager.
+	You may then configure additional keys or change the ones setup by default.
+	The defaults are:
+	<dl>
+	<dt>Left button, short press</dt>
+	<dd>switch to the next VFO if in transceive mode, (i.e.) the transmit slice equals the receive slice.</dd>
+	<dt>Left button, double press</dt>
+	<dd>
+	lock/unlock the FlexControl tuning knob.  Tuning is enabled initially,
+	Locking the tuning prevents accidentally changing the frequency by bumping the tuning knob, but does not disable other functions of the knob.
+	<p>
+	If you have previously used the knob, you may want to change the configuration to reflect this.
+	The previous value for "Left button, double press"" was to disable the knob.
+	</p>
+	</dd>
+	<dt>Middle button, short press</dt>
+	<dd>Toggle noise reduction on/off, if not in CW mode.  Toggle the APF on/off if in CW mode.</dd>
+	<dt>Right button, short press</dt>
+	<dd>
+	Increase the frequency tuning step.
+	The initial tuning step is 10 Hz for CW mode, 5 KHZ for AM mode, and 50 Hz otherwise.
+	</dd>
+	<dt>Right button, double press</dt>
+	<dd>
+	Decrease the frequency tuning step.
+	The initial tuning step is 10 Hz for CW mode, 5 KHz for AM mode, and 50 Hz otherwise.
+	</dd>
+	<dt>Tuning knob, short press</dt>
+	<dd>
+	Toggle tuning of the frequency with that of the RIT.
+	If the RIT was disabled, it is enabled.
+	Note that initially the tuning knob tunes the VFO's frequency.
+	If switching from tuning the RIT to tuning the VFO, the RIT is disabled.
+	</dd>
+	</dl>
+	</p>
+	<p>
+	Let's say, for example, you wish to use a long press of the left button to disable/enable the knob.  This is currently done with a double press on the left button.
+	<ul>
+	<li>Select "Left button, double press", then press Tab.</li>
+	<li>
+	Select "None" as the associated function.
+	This will disable "Left button, double press"."
+	</li>
+	<li>Now press Tab until you get back to the list of knob keys, then select "Left button, long press".</li>
+	<li>Select "Knob disable/enable".</li>
+	<li>Press Tab, then click the "Done" button.</li>
+	</ul>
+	Now a long press of the left button will disable, then re-enable the knob.
+	</p>
+	<h2><a id="Commands">JJFlexRadio Commands</a></h2>
+	<p>
+	With the exception of the logging commands, all JJFlexRadio commands must be entered from the main screen.
+	You may change the key assignments as discussed in <a href="#KeyMapping">Change Key Mapping</a> in the Actions Menu section.
+	The logging commands are discussed in somewhat more detail in the section on <a href="#Logging">logging.</a>
+	</p>
+	<dl>
+	<dt>F1 - Show keys help</dt>
+	<dd>
+	Use F1 to list the functions and their key assignments.
+	Deleted key assignments aren't shown here, see <a href="#KeyMapping">Change Key Mapping.</a>
+	</dd>
+	<dt>F2 - Show frequency or pause/continue scan</dt>
+	<dd>
+	This either focuses on the main frequency display, or pauses the scan if you're scanning.
+	It is very handy if you're on a field other than the frequency, and need to jump to it quickly.
+	</dd>
+	<dt>F3</dt>
+	<dd>F3 takes you to the <a href="#rcvdtext">"received text"</a> field from any field in the main window.</dd>
+	<dt>F4</dt>
+	<dd>This takes you to the "sent text" field from any field in the main window.</dd>
+	<dt>F12</dt>
+	<dd>Stop sending CW</dd>
+	<dt>Control-F - Enter frequency</dt>
+	<dd>
+	Use this to enter a frequency manually.  The frequency is entered in the same format as frequencies are displayed, (i.e.) mmm.kkk.hhh.
+	For example, 14.2, 14.255 or 14.255.6.
+	</dd>
+	<dt>Control-M - Bring up the memory dialogue</dt>
+	<dd>See <a href="#RigMemories">The Rig's Memories.</a></dd>
+	<dt>Alt-D - Set log date/time</dt>
+	<dd>
+	This function will set the date and time of the current log entry, or just take you to the date field if you're currently in a log entry.
+	You might use this if you hear a DX station, and use ctrl-N to bring up a new log entry, and log his call, but then you work him after spending ten minutes in the pile-up, and want your log entry to reflect the date and time you actually worked.
+	</dd>
+	<dt>Control-W - Write log entry</dt>
+	<dd>
+	This writes a log entry.
+	Note that the entry is not written when you leave the form, but you must use this function to write it to the log.
+	</dd>
+	<dt>Shift, Control-L - Enter log file properties</dt>
+	<dd>
+	This is the same as the "Log Characteristics" menu item.
+	See <a href="#LogCharacteristics">the section on entering log file characteristics.</a>
+	<dt>Alt-O - Log the mode</dt>
+	<dd>
+	Bring up the log form and go to the mode field.
+	This is normally set automatically.
+	</dd>
+	<dt>Alt-C - Log callsign</dt>
+	<dd>Bring up the log form and go to the callsign field.</dd>
+	<dt>Ctrl-H - Log his RST</dt>
+	<dd>
+	Bring up the log form and go to the hisRST field.
+	Note this is Ctrl-H, not Alt-H, which brings up the Help menu.
+	</dd>
+	<dt>Alt-M - Log my RST</dt>
+	<dd>Bring up the log form and go to the myRST field.</dd>
+	<dt>Alt-Q - Log QTH</dt>
+	<dd>Bring up the log form and go to the QTH field.</dd>
+	<dt>Alt-S - Log state/province</dt>
+	<dd>Bring up the log form and go to the State/Province field.</dd>
+	<dt>Alt-N - Log name</dt>
+	<dd>Bring up the log form and go to the Handle field.</dd>
+	<dt>Alt-R - Log rig</dt>
+	<dd>Bring up the log form and go to the Rig field.</dd>
+	<dt>Ctrl-A - Log antenna.</dt>
+	<dd>
+	Bring up the log form and go to the Antenna field.
+	Here again, Ctrl-A is used instead of Alt-A.
+	</dd>
+	<dt>Alt-E - Log comments</dt>
+	<dd>Bring up the log form and go to the Comments field.</dd>
+	<dt>Control-N - New log entry</dt>
+	<dd>
+	Bring up a new log entry.
+	The date/time, mode, and frequencies will be set.
+	</dd>
+	<dt>Shift, Control-F - Find a log entry</dt>
+	<dd>Search for a log entry, see <a href="#LogSearch">Searching the Log.</a></dd>
+	<dt>Control-S - Start/stop scan</dt>
+	<dd>See the section on <a href="#Scanning">scanning.</a></dd>
+	<dt>Control-Shift-M - Memory scan</dt>
+	<dd>See the section on <a href="#Scanning">scanning.</a></dd>
+	<dt>Shift, Control-U - Use a saved scan</dt>
+	<dd>See the section on <a href="#Scanning">scanning.</a></dd>
+	<dt>Control-Z - Stop the current scan</dt>
+	<dd>See the section on <a href="#Scanning">scanning.</a></dd>
+	<dt>Control-P Bring up the pan adapter dialogue</dt>
+	<dd>see <a href="#Panning">the section on the pan adapter.</a></dd>
+	<dt><a id="zb">Control-C</a></dt>
+	<dd>
+	CW zerobeat.
+	Note that if the RIT is active, this changes the RIT offset, not the VFO frequency.
+	</dd>
+	<dt>Control-Shift-C</dt>
+	<dd>Clear the RIT.</dd>
+	<dt><a id="rb">Control-Shift-R</a></dt>
+	<dd>
+	This opens a web browser session at www.reversebeacon.net.
+	You can specify the call to check for; the default is the call of the current operator.
+	</dd>
+	<dt>Control-Shift-D</dt>
+	<dd>This allows you to view DX spots from a DX spotting cluster, see <a href="#cluster">DX Cluster.</a></dd>
+	<dt>shift-Pageup/Pagedown</dt>
+	<dd>Raise/lower lineout gain.</dd>
+	<dt>alt-Pageup/Pagedown</dt>
+	<dd>Raise/lower slice gain.</dd>
+	<dt>alt-shift-Pageup/Pagedown</dt>
+	<dd>Raise/lower headphone gain.</dd>
+	<dt>ctrl-F9</dt>
+	<dd>
+	Immediate value toggle.
+	This toggles the APF if the mode is CW, otherwise it toggles noise reduction.
+	</dd>
+	<dt>Alt-L - <a id="StationLookup">station lookup</a></dt>
+	<dd>
+	This brings up a form where you may enter a station's callsign to do a callbook lookup.
+	It uses the callbook lookup from hamqth.com, as does the logging facility.
+	This is handy if you're in a QSO and have started the log entry, and want to lookup another call, or if you just don't use the logging facility.
+	</dd>
+	</dl>
+	<p>Any CW message keys you've defined will show up after these keys.</p>
+	<h2><a id="moving">Moving to another computer</a></h2>
+	<p>
+	This is a two-step process.
+	The first step is to export your current setup using the "Export Setup" Actions menu item.
+	This brings up a dialogue where you provide a file to export your setup into.
+	This is a .zip archive.
+	You might want to put this on removable media or the cloud, so you can access it to import your setup onto another computer.
+	</p>
+	<p>The second step is to import your setup into a just-installed version of the program.
+	When you bring JJFlexRadio up for the first time on another computer, you'll see the Welcome screen.
+	One of the options is to import a previously saved configuration.
+	This will likely be the .zip file you saved.
+	</p>
+	<h2><a id="support">Getting Support</a></h2>
+	<p>
+	If you need support for JJFlexRadio, You can send an email to the support link on the
+	<a href="http://www.jjshaffer.net">JJFlexRadio web page.</a>
+	</p>
+	<h2><a id="enhance">Enhancements and Fixes</a></h2>
+	<p>
+	This is the initial release of this program.
+	</p>
+	<h3>Version 1.2.1</h3>
+	<ul>
+	<li>
+	Attention:  This version of JJFlexRadio works with FlexLib version 2.4.9.
+	It will not work with 2.5.1.
+	<li>Reconnecting to the radio without restarting JJFlexRadio now works.</li>
+	<li>You may specify a radio is to be auto-connected when the program is brought up.</li>
+	</ul>
+	<h3>Version 1.3.1</h3>
+	<ul>
+	<li>
+	Attention:  This version of JJFlexRadio works with FlexLib version 2.5.1.
+	It will not work with 2.4.9.
+	</li>
+	<li>A memory no longer specifies the power.</li>
+	</ul>
+	<h3>Version 1.3.2</h3>
+	<ul>
+	<li>When going to a frequency from the pan adapter, the frequency is no longer rounded.</li>
+	</ul>
+	<h3>Version 1.3.3</h3>
+	<ul>
+	<li>The on/off status of the FlexControl knob is now reported on the status line.</li>
+	<li>A reboot capability has been added, see <a href="#operations">The Operations Menu."></a></li>
+	</ul>
+	<h3>Version 2.5.1</h3>
+	<ul>
+	<li>The new version number, 2.5.1 in this case, indicates the minimum FlexLib version supported.</li>
+	<li>
+	The FlexKnob NextVFO function now is now only valid when in Transceive mode.
+	It changes both the receive and transmit VFOs to the nextVFO, and mutes the old VFO and unmutes the new one.
+	</li>
+	<li>Made changes to better support the NVDA screen reader.</li>
+	<li>Added the PATemp, PA temperature in DGC, and Volts fields.</li>
+	<li>
+	Replaced the Preamp field with the panadapter's RF gain.
+	The associated gain values and increments are rig dependent.
+	</li>
+	<li>
+	Added the ability to only lock the flexknob's tuning without disabling the other knob functions,
+	see <a href="#flexControl">The FlexControl knob.</a>
+	</li>
+	</ul>
+	<h3>Version 3.1.12</h3>
+	<ul>
+	<li>The slice fields on the left end of the main display now indicate the transmit slice with a capital letter.</li>
+	<li>
+	With the cursor on the origin VFO's letter in the VFO field,
+	entering a VFO number, 0 through the max VFO number, will copy the origin VFO to that destination VFO.
+	</li>
+	<li>Added support for multiple radio users, see <a href="#sharing">the Rig Sharing section.</a>.</li>
+	<li>
+	"Remote audio" is now known as "PC audio".
+	It may be toggled off and on even if connected over the network.
+	</li>
+	<li>Added a section with <a href="#theFlex">general information about the Flex radio.</a></li>
+	<li>
+	Added a "Profile Management" item to the Actions menu,
+	see the section <a href="#profileMgmt">Profiles and Profile Management</a>
+	</li>
+	</ul>
+	</ul>
+	<h3>Version 3.1.12.8</h3>
+	<ul>
+	<li>
+	I added a discussion of how to move JJFlexRadio to another computer,
+	see <a href="#moving">Moving to another computer</a>
+	</li>
+	<li>The <a href="#actions">actions menu</a> has been updated.</li>
+	<li>
+	Prior to version 3.1.12.5, the program created a tx profile named JJRadioDefault.
+	This had the unfortunate effect of setting the output power to 0, for example.
+	Versions 3.1.12.5 and beyond use the Default tx profile in this instance.
+	If you've been using a version of this program at 3.1.12, prior to 3.1.2.5, you might want to make the tx profile named "Default" the default tx profile by updating it and selecting the default checkbox,
+	then make it the current profile by selecting it or just pressing enter on the list entry.
+	In any case, you'll want to at least check your output and tune power levels.
+	</li>
+		<li>I've added a section on <a href="#sendingCW">Sending CW.</a>
+		It mentions a new feature, CW buffering.
+		</li>
+	<li>You may now control the state of the transmit-related jacks on the rear panel, see <a href="#transmitControls">Transmit Controls</a> found in the Operations menu.</li>
+	</ul>
+	<h3>Version 3.1.12.16</h3>
+	<ul>
+		<li>Added a feature to CW sending to send characters when typed rather than waiting for a space.
+	It's requested by using ctrl-F4 to go to the send text area.</li>
+	</ul>
+	<h3>Version 3.1.12.24</h3>
+	<ul>
+		<li>Fixed receive antenna specification.
+			The Ant field has been renamed to TXAnt.
+	Note that currently the receive antenna must be specified independently of the main antenna.
+			For example, if you specify Ant2 as the TXAnt, you must also change the RXAnt to Ant2.
+	</ul>
+	<h3>Version 3.1.12.25</h3>
+	<ul>
+		<li>You may now specify the SMeter to be shown in dbm rather than s-units.
+			See the "SMeter display" item in the Operations menu.
+	</ul>
+	<h2><a id="bugs">Known Bugs and Limitations</a></h2>
+	<ul>
+	<li>
+	Not all rig fields and functions are implemented.
+	However, I believe I have implemented the most commonly needed functions.
+	</li>
+	<li>After importing exported radio parameters, it is recommended that you restart the program.</li>
+	<li>This version should only be used with a Flex radio running SmartSDR version 3.1.12.</li>
+	<li>
+	Prior to version 3.1.12.5, the program created a tx profile named JJRadioDefault.
+	This had the unfortunate effect of setting the output power to 0, for example.
+	Versions 3.1.12.5 and beyond use the Default tx profile in this instance.
+	If you've been using a version of this program at 3.1.12, prior to 3.1.2.5, you might want to make the tx profile named "Default" the default tx profile by updating it and selecting the default checkbox,
+	then make it the current profile by selecting it or just pressing enter on the list entry.
+	In any case, you'll want to at least check your output and tune power levels.
+	</li>
+	</ul>
+</body>
+</html>

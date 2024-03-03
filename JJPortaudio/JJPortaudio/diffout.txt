@@ -1,0 +1,47 @@
+147a148
+>                             item.StreamBlock.Started = false;
+158a160
+>                                     item.StreamBlock.Started = true;
+172c174
+<                             if (item.StreamBlock.Open && item.StreamBlock.Active)
+---
+>                             if (item.StreamBlock.Open && item.StreamBlock.Started)
+183a186
+>                             item.StreamBlock.Started = false;
+232a236
+>             public bool Started = false; // true if started and out of start/stop code.
+280c284,297
+<         private int qKey;
+---
+>         private int _qKey;
+>         private int qKey
+>         {
+>             get
+>             {
+>                 //Tracing.TraceLine("Audio:qkey get:" + _qKey, TraceLevel.Info);
+>                 return _qKey;
+>             }
+>             set
+>             {
+>                 _qKey = value;
+>                 Tracing.TraceLine("Audio:qkey set:" + _qKey, TraceLevel.Info);
+>             }
+>         }
+312a330
+>             Tracing.TraceLine("audio:qkey:" + qKey, TraceLevel.Info);
+337c355
+<         internal bool Open(Devices.DeviceTypes inOut, uint rate, bool useOpus=false)
+---
+>         internal bool Open(Devices.DeviceTypes inOut, uint rate, bool useOpus = false)
+406c424
+<             Tracing.TraceLine("Audio.Start", TraceLevel.Info);
+---
+>             Tracing.TraceLine("Audio.Start:qkey:" + qKey, TraceLevel.Info);
+410c428
+<             rv = Tracing.await(() => { return CBData.Active; }, 1000);
+---
+>             rv = Tracing.await(() => { return CBData.Started; }, 1000);
+419c437
+<             //Tracing.await(() => { return !CBData.IsAlive; }, 5000);
+---
+>             Tracing.await(() => { return !CBData.Started; }, 5000);

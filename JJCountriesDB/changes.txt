@@ -1,0 +1,4 @@
+﻿1.2.0.0 - Rebased country lookup to cty_wt.dat
+1.2.1.0 - Change treatment of slash in country lookupByCall.
+1.2.2.0 - Replace lookupByName with lookupByDXCC.
+1.2.2.1 02/25/2021 - Small change to countriesDB.cs around line 196 and 241

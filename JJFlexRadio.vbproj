@@ -1,0 +1,550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{8A1589EC-8802-4638-815F-122D7F1F9E15}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>
+    </StartupObject>
+    <RootNamespace>JJRadio</RootNamespace>
+    <AssemblyName>JJFlexRadio 3.2.37</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>JJFlexRadio 3.2.37.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>JJFlexRadio 3.2.37.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutProgram.Designer.vb">
+      <DependentUpon>AboutProgram.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutProgram.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CMDLine.Designer.vb">
+      <DependentUpon>CMDLine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CMDLine.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CWMessageAdd.Designer.vb">
+      <DependentUpon>CWMessageAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CWMessageAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CWMessages.vb" />
+    <Compile Include="CWMessageUpdate.Designer.vb">
+      <DependentUpon>CWMessageUpdate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CWMessageUpdate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugInfo.vb" />
+    <Compile Include="DefineCommands.Designer.vb">
+      <DependentUpon>DefineCommands.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DefineCommands.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportForm.Designer.vb">
+      <DependentUpon>ExportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ExportForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportSetup.vb" />
+    <Compile Include="FindLogEntry.Designer.vb">
+      <DependentUpon>FindLogEntry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FindLogEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlexKnob.vb" />
+    <Compile Include="Form1.designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FreqInput.Designer.vb">
+      <DependentUpon>FreqInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FreqInput.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="globals.vb" />
+    <Compile Include="ImportForm.Designer.vb">
+      <DependentUpon>ImportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImportForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportSetup.vb" />
+    <Compile Include="KeyCommands.vb" />
+    <Compile Include="Levels.vb" />
+    <Compile Include="Lister.Designer.vb">
+      <DependentUpon>Lister.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Lister.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogCharacteristics.Designer.vb">
+      <DependentUpon>LogCharacteristics.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LogCharacteristics.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogClass.vb" />
+    <Compile Include="LogDupChecking.vb" />
+    <Compile Include="LogEntry.Designer.vb">
+      <DependentUpon>LogEntry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LogEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginName.Designer.vb">
+      <DependentUpon>LoginName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginName.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LogSession.vb" />
+    <Compile Include="LogStats.vb" />
+    <Compile Include="LOTWMerge.Designer.vb">
+      <DependentUpon>LOTWMerge.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LOTWMerge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MacroItems.vb" />
+    <Compile Include="ManageGroups.Designer.vb">
+      <DependentUpon>ManageGroups.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ManageGroups.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageGroupsEdit.Designer.vb">
+      <DependentUpon>ManageGroupsEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ManageGroupsEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemoryGroup.Designer.vb">
+      <DependentUpon>MemoryGroup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryGroup.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemoryScan.Designer.vb">
+      <DependentUpon>MemoryScan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryScan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="PersonalData.vb" />
+    <Compile Include="PersonalInfo.Designer.vb">
+      <DependentUpon>PersonalInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile.Designer.vb">
+      <DependentUpon>Profile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfileWorker.Designer.vb">
+      <DependentUpon>ProfileWorker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileWorker.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReverseBeacon.Designer.vb">
+      <DependentUpon>ReverseBeacon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReverseBeacon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RigSelector.Designer.vb">
+      <DependentUpon>RigSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RigSelector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SavedScanData.vb" />
+    <Compile Include="scan.Designer.vb">
+      <DependentUpon>scan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="scan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScanName.Designer.vb">
+      <DependentUpon>ScanName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ScanName.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectScan.Designer.vb">
+      <DependentUpon>SelectScan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SelectScan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowBands.Designer.vb">
+      <DependentUpon>ShowBands.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShowBands.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowHelp.Designer.vb">
+      <DependentUpon>ShowHelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShowHelp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowStationNames.Designer.vb">
+      <DependentUpon>ShowStationNames.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShowStationNames.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StationLookup.Designer.vb">
+      <DependentUpon>StationLookup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StationLookup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraceAdmin.Designer.vb">
+      <DependentUpon>TraceAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TraceAdmin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Welcome.Designer.vb">
+      <DependentUpon>Welcome.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Welcome.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutProgram.resx">
+      <DependentUpon>AboutProgram.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CMDLine.resx">
+      <DependentUpon>CMDLine.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CWMessageAdd.resx">
+      <DependentUpon>CWMessageAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CWMessageUpdate.resx">
+      <DependentUpon>CWMessageUpdate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DefineCommands.resx">
+      <DependentUpon>DefineCommands.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportForm.resx">
+      <DependentUpon>ExportForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindLogEntry.resx">
+      <DependentUpon>FindLogEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FreqInput.resx">
+      <DependentUpon>FreqInput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportForm.resx">
+      <DependentUpon>ImportForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lister.resx">
+      <DependentUpon>Lister.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogCharacteristics.resx">
+      <DependentUpon>LogCharacteristics.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogEntry.resx">
+      <DependentUpon>LogEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginName.resx">
+      <DependentUpon>LoginName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LOTWMerge.resx">
+      <DependentUpon>LOTWMerge.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageGroups.resx">
+      <DependentUpon>ManageGroups.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageGroupsEdit.resx">
+      <DependentUpon>ManageGroupsEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryGroup.resx">
+      <DependentUpon>MemoryGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryScan.resx">
+      <DependentUpon>MemoryScan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonalInfo.resx">
+      <DependentUpon>PersonalInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile.resx">
+      <DependentUpon>Profile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfileWorker.resx">
+      <DependentUpon>ProfileWorker.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReverseBeacon.resx">
+      <DependentUpon>ReverseBeacon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RigSelector.resx">
+      <DependentUpon>RigSelector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="scan.resx">
+      <DependentUpon>scan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScanName.resx">
+      <DependentUpon>ScanName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectScan.resx">
+      <DependentUpon>SelectScan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowBands.resx">
+      <DependentUpon>ShowBands.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowHelp.resx">
+      <DependentUpon>ShowHelp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowStationNames.resx">
+      <DependentUpon>ShowStationNames.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StationLookup.resx">
+      <DependentUpon>StationLookup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraceAdmin.resx">
+      <DependentUpon>TraceAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="changes.txt" />
+    <Content Include="JJFlexRadioReadme.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libopus.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config" />
+    <Content Include="install.bat" />
+    <Content Include="install.nsi" />
+    <None Include="install template.nsi" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="notes.txt" />
+    <Content Include="Opus Copying.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PortAudio LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="portaudio.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PortAudioSharp License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="runPgm.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="ship.txt" />
+    <Content Include="Welcome.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src.sed" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cty_wt.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="adif\adif.csproj">
+      <Project>{cd39347b-b9b8-413c-8272-77e82597bf4d}</Project>
+      <Name>adif</Name>
+    </ProjectReference>
+    <ProjectReference Include="escapes\escapes.csproj">
+      <Project>{0d6f7843-33f7-46b0-ab2d-47baa967ef5e}</Project>
+      <Name>escapes</Name>
+    </ProjectReference>
+    <ProjectReference Include="FlexLib_API_v3.2.37\FlexLib\FlexLib.csproj">
+      <Project>{7927817c-d5ef-4a9e-b38e-29668f308343}</Project>
+      <Name>FlexLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="HamBands\HamBands.csproj">
+      <Project>{f8380a38-0cc4-45a7-9621-8dbcb188b758}</Project>
+      <Name>HamBands</Name>
+    </ProjectReference>
+    <ProjectReference Include="HamQTHLookup\HamQTHLookup.csproj">
+      <Project>{55051463-09ce-49fe-9759-dadab8a5139b}</Project>
+      <Name>HamQTHLookup</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJArclusterLib\JJArclusterLib.csproj">
+      <Project>{7f7e4ecc-0ab1-40d1-b9e0-b0b0bcd7536c}</Project>
+      <Name>JJArclusterLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJCountriesDB\JJCountriesDB.csproj">
+      <Project>{20306725-f87f-463b-b405-103f390bd68a}</Project>
+      <Name>JJCountriesDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJFlexControl\JJFlexControl.csproj">
+      <Project>{d32cbaa0-892e-4811-9ade-14ebfd6afe19}</Project>
+      <Name>JJFlexControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJLogIO\logio\JJLogIO.csproj">
+      <Project>{d75f5958-61d0-41b5-9459-bd233166dbb6}</Project>
+      <Name>JJLogIO</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJLogLib\JJLogLib.csproj">
+      <Project>{9822674c-bc13-4502-9f9a-59b603c55827}</Project>
+      <Name>JJLogLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJMinimalTelnet\JJMinimalTelnet.csproj">
+      <Project>{fa52fdf4-47f0-4093-b835-5fcc21f8c9fd}</Project>
+      <Name>JJMinimalTelnet</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJPortaudio\JJPortaudio\JJPortaudio.csproj">
+      <Project>{ac0d237a-8224-4016-8001-3cf129cad335}</Project>
+      <Name>JJPortaudio</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJTrace\JJTrace.csproj">
+      <Project>{eab82c71-8cc6-4002-ad7a-bb2d375c8159}</Project>
+      <Name>JJTrace</Name>
+    </ProjectReference>
+    <ProjectReference Include="JJW2WattMeter\JJW2WattMeter.csproj">
+      <Project>{381be00e-67ce-4191-b3a0-4b195cd01db9}</Project>
+      <Name>JJW2WattMeter</Name>
+    </ProjectReference>
+    <ProjectReference Include="MsgLib\MsgLib.csproj">
+      <Project>{c5b8ac00-ab97-4731-8c30-51df327cb6ae}</Project>
+      <Name>MsgLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="P-Opus-master\POpusCodec.csproj">
+      <Project>{64c3706d-6620-44a7-ba18-e00832c7ea52}</Project>
+      <Name>POpusCodec</Name>
+    </ProjectReference>
+    <ProjectReference Include="PortAudioSharp-src-0.19.3\PortAudioSharp\PortAudioSharp.csproj">
+      <Project>{8199a26e-c92e-4f6a-9eee-95f7afc58847}</Project>
+      <Name>PortAudioSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="skcc\skcc.csproj">
+      <Project>{0402036e-aec8-4976-a484-b5b9bbdbbc93}</Project>
+      <Name>skcc</Name>
+    </ProjectReference>
+    <ProjectReference Include="FlexLib_API_v3.2.37\UiWpfFramework\UiWpfFramework.csproj">
+      <Project>{9c0ad871-92fd-461b-84ff-3738d701814f}</Project>
+      <Name>UiWpfFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="FlexLib_API_v3.2.37\Util\Util.csproj">
+      <Project>{38935dc9-ff48-470c-b876-473a3ae8bd32}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="FlexLib_API_v3.2.37\Vita\Vita.csproj">
+      <Project>{6ed364fb-7444-44da-9196-1d8679425b3e}</Project>
+      <Name>Vita</Name>
+    </ProjectReference>
+    <ProjectReference Include="RadioBoxes\RadioBoxes.csproj">
+      <Project>{c15f2768-3386-4703-ae1d-cc4e59348610}</Project>
+      <Name>RadioBoxes</Name>
+    </ProjectReference>
+    <ProjectReference Include="Radios\Radios.csproj">
+      <Project>{07e148aa-8a14-4e91-ba46-d29371b51f9d}</Project>
+      <Name>Radios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>call "$(ProjectDir)\install.bat" "$(ProjectDir)" "$(ConfigurationName)" "$(TargetName)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

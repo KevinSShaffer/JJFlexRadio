@@ -1,0 +1,13 @@
+﻿Dictionary<ADIFString, LogFieldElement> record
+    Contains either an EOH or EOR key, header or record.
+class SessionType:
+    contains fileStream, textReader, textWriter, position
+SessionType Open(String name, system.io.filemode):
+    if mode is open, it's a read, otherwise write.
+    Return session number
+record read(int session):
+    Read at current file position.
+    return dictionary of fields, null on error.
+bool Write(session, record):
+    return true on success.
+Close(session)

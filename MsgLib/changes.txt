@@ -1,0 +1,2 @@
+﻿1.2.1.0 - Added function to perform user-specified function.
+1.2.1.0 - Added applicationData array to OptionalMessageElement.

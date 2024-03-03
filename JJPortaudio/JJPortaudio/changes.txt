@@ -1,0 +1,14 @@
+﻿1.1.1.1 08/26/2019 - Fixed Start/Stop serialization
+1.1.1.2 10/13/2019 - Indicate Input or Output on the device selection header.
+1.1.1.3 04/04/2020 - decode opus in the callback.
+1.1.1.4 09/17/2020 - Add EffectiveSpeed
+1.1.1.5 09/17/2020 - Add SK ProSign, key = &
+1.1.1.6 09/19/2020 - Changed timing when using effective speed
+1.1.1.7 10/02/2020 - added MSForCharacter()
+1.1.1.8 10/03/2020 - Fix for sent callback.
+1.1.1.9 12/05/2020 - Fix speed/effectiveSpeed setting problem, and small timing change.
+1.2.1.1 01/04/2021 - Allow optional audio callback and callback per second specification
+
+1.2.1.2 04/15/2021 - Fix to Audio.finished().
+1.2.2.1 03/19/2022 add half speed 
+

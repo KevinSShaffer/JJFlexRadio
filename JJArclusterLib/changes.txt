@@ -1,0 +1,7 @@
+﻿1.2.1.0 - Added Track button
+1.2.1.1 - login in form_load
+1.2.2.0 - Add goto station
+1.2.2.1 - Fix problem with space at beginning of line.
+1.2.3.0 - Make beep 3-state.
+1.2.4.0 - Async login
+1.2.5.0 10/18/2021 - Fixed multiple clusters

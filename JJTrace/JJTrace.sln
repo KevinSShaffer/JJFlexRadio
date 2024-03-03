@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JJTrace", "JJTrace.csproj", "{EAB82C71-8CC6-4002-AD7A-BB2D375C8159}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JJTraceNet2.0", "JJTraceNet2.0\JJTraceNet2.0.csproj", "{AA29584E-EF9F-4F4B-B123-FC9E28B33D1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAB82C71-8CC6-4002-AD7A-BB2D375C8159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAB82C71-8CC6-4002-AD7A-BB2D375C8159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAB82C71-8CC6-4002-AD7A-BB2D375C8159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAB82C71-8CC6-4002-AD7A-BB2D375C8159}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA29584E-EF9F-4F4B-B123-FC9E28B33D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA29584E-EF9F-4F4B-B123-FC9E28B33D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA29584E-EF9F-4F4B-B123-FC9E28B33D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA29584E-EF9F-4F4B-B123-FC9E28B33D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

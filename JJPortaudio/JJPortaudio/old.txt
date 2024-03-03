@@ -1,0 +1,13 @@
+﻿            // elements to send for the inter spaces.
+            int interElements = ((standardWord.Length - 1) * intraChar);
+            // total elements needed to send the word.
+            int totalElements = wordElements + interElements + interWord;
+            // time to send the word, w/0 inter spacing, at original speed.
+            float origWordTime = msPerElement * wordElements;
+            // total time to send the new word.
+            float newWordTotalTime = (ParisDividend / EffectiveSpeed) * totalElements; // see msPerElement
+            // need the new word total time minus the original word send time.
+            float newTime = newWordTotalTime - origWordTime;
+            // need the expanded inter elements. handle rounding.
+            int newInterElements = (int)((newTime + 0.5) / msPerElement);
+            return newInterElements; ;
