@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,9 +10,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Radios</RootNamespace>
     <AssemblyName>Radios</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +26,7 @@
     <DocumentationFile>bin\Debug\Radios.XML</DocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <NoWarn>1591, 1522</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +46,7 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -51,6 +55,7 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip">
@@ -185,6 +190,19 @@
     <ProjectReference Include="..\FlexLib_API_v3.2.37\FlexLib\FlexLib.csproj">
       <Project>{7927817c-d5ef-4a9e-b38e-29668f308343}</Project>
       <Name>FlexLib</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+    <ProjectReference Include="..\FlexLib_API_v3.2.37\UiWpfFramework\UiWpfFramework.csproj">
+      <Project>{9c0ad871-92fd-461b-84ff-3738d701814f}</Project>
+      <Name>UiWpfFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlexLib_API_v3.2.37\Util\Util.csproj">
+      <Project>{38935dc9-ff48-470c-b876-473a3ae8bd32}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlexLib_API_v3.2.37\Vita\Vita.csproj">
+      <Project>{6ed364fb-7444-44da-9196-1d8679425b3e}</Project>
+      <Name>Vita</Name>
     </ProjectReference>
     <ProjectReference Include="..\HamBands\HamBands.csproj">
       <Project>{f8380a38-0cc4-45a7-9621-8dbcb188b758}</Project>
@@ -209,18 +227,6 @@
     <ProjectReference Include="..\PortAudioSharp-src-0.19.3\PortAudioSharp\PortAudioSharp.csproj">
       <Project>{8199a26e-c92e-4f6a-9eee-95f7afc58847}</Project>
       <Name>PortAudioSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlexLib_API_v3.2.37\UiWpfFramework\UiWpfFramework.csproj">
-      <Project>{9c0ad871-92fd-461b-84ff-3738d701814f}</Project>
-      <Name>UiWpfFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlexLib_API_v3.2.37\Util\Util.csproj">
-      <Project>{38935dc9-ff48-470c-b876-473a3ae8bd32}</Project>
-      <Name>Util</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlexLib_API_v3.2.37\Vita\Vita.csproj">
-      <Project>{6ed364fb-7444-44da-9196-1d8679425b3e}</Project>
-      <Name>Vita</Name>
     </ProjectReference>
     <ProjectReference Include="..\RadioBoxes\RadioBoxes.csproj">
       <Project>{C15F2768-3386-4703-AE1D-CC4E59348610}</Project>
