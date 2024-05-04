@@ -510,22 +510,6 @@
       <Project>{0d6f7843-33f7-46b0-ab2d-47baa967ef5e}</Project>
       <Name>escapes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FlexLib_API_v3.2.37\FlexLib\FlexLib.csproj">
-      <Project>{7927817c-d5ef-4a9e-b38e-29668f308343}</Project>
-      <Name>FlexLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlexLib_API_v3.2.37\UiWpfFramework\UiWpfFramework.csproj">
-      <Project>{9c0ad871-92fd-461b-84ff-3738d701814f}</Project>
-      <Name>UiWpfFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlexLib_API_v3.2.37\Util\Util.csproj">
-      <Project>{38935dc9-ff48-470c-b876-473a3ae8bd32}</Project>
-      <Name>Util</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlexLib_API_v3.2.37\Vita\Vita.csproj">
-      <Project>{6ed364fb-7444-44da-9196-1d8679425b3e}</Project>
-      <Name>Vita</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HamBands\HamBands.csproj">
       <Project>{f8380a38-0cc4-45a7-9621-8dbcb188b758}</Project>
       <Name>HamBands</Name>
@@ -585,6 +569,22 @@
     <ProjectReference Include="..\skcc\skcc.csproj">
       <Project>{0402036e-aec8-4976-a484-b5b9bbdbbc93}</Project>
       <Name>skcc</Name>
+    </ProjectReference>
+    <ProjectReference Include="FlexLib_API_v2.4.9\FlexLib\FlexLib.csproj">
+      <Project>{7927817c-d5ef-4a9e-b38e-29668f308343}</Project>
+      <Name>FlexLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="FlexLib_API_v2.4.9\UiWpfFramework\UiWpfFramework.csproj">
+      <Project>{9c0ad871-92fd-461b-84ff-3738d701814f}</Project>
+      <Name>UiWpfFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="FlexLib_API_v2.4.9\Util\Util.csproj">
+      <Project>{38935dc9-ff48-470c-b876-473a3ae8bd32}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="FlexLib_API_v2.4.9\Vita\Vita.csproj">
+      <Project>{6ed364fb-7444-44da-9196-1d8679425b3e}</Project>
+      <Name>Vita</Name>
     </ProjectReference>
     <ProjectReference Include="RadioBoxes\RadioBoxes.csproj">
       <Project>{c15f2768-3386-4703-ae1d-cc4e59348610}</Project>
